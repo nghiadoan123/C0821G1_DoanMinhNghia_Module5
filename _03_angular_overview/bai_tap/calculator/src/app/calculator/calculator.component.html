@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      Number One:
+      <input type="text" class="form-control" [(ngModel)]="numberOne">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      Number Two:
+      <input type="text" class="form-control" [(ngModel)]="numberTwo">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1">
+      <button class="btn-primary" (click)="sum()">Sum</button>
+    </div>
+    <div class="col-1">
+      <button class="btn-primary" (click)="sub()">Sub</button>
+    </div>
+    <div class="col-1">
+      <button class="btn-primary" (click)="mul()">Mul</button>
+    </div>
+    <div class="col-1">
+      <button class="btn-primary" (click)="div()">Div</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      Result: {{total}}
+    </div>
+  </div>
+</div>
+
