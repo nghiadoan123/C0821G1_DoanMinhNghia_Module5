@@ -1,0 +1,214 @@
+<p>customer-list works!</p>
+
+
+<app-header></app-header>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3>Customer List</h3>
+      <p>Up the best of Service to you.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12  text-center">
+      <span><a href="#" class="text-decoration-none text-primary fs-6">Explore ></a></span>
+      <span> <a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></span>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <table class="table table-striped w-50 mx-auto">
+    <thead class="thead-inverse">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Code Number</th>
+      <th>Birth Day</th>
+      <th>Gender</th>
+      <th>Id Card</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Customer Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Jhone</td>
+      <td>1213</td>
+      <td>1987-11-12</td>
+      <td>Man</td>
+      <td>012345678</td>
+      <td>0905444444</td>
+      <td>Jhon@gmail.com</td>
+      <td>America</td>
+      <td>Diamond</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-delete" data-toggle="modal"
+                data-target="#deleteModal">
+          Delete
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary btn-view" data-toggle="modal" data-target="#deditModal">
+          Edit
+        </button>
+
+      </td>
+
+    </tr>
+
+    <tr>
+      <td>1</td>
+      <td>Jhone</td>
+      <td>1213</td>
+      <td>1987-11-12</td>
+      <td>Man</td>
+      <td>012345678</td>
+      <td>0905444444</td>
+      <td>Jhon@gmail.com</td>
+      <td>America</td>
+      <td>Diamond</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-delete" data-toggle="modal"
+                data-target="#deleteModal">
+          Delete
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary btn-view" data-toggle="modal" data-target="#deditModal">
+          Edit
+        </button>
+
+      </td>
+
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Jhone</td>
+      <td>1213</td>
+      <td>1987-11-12</td>
+      <td>Man</td>
+      <td>012345678</td>
+      <td>0905444444</td>
+      <td>Jhon@gmail.com</td>
+      <td>America</td>
+      <td>Diamond</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-delete" data-toggle="modal"
+                data-target="#deleteModal">
+          Delete
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary btn-view" data-toggle="modal" data-target="#editModal">
+          Edit
+        </button>
+
+      </td>
+
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Jhone</td>
+      <td>1213</td>
+      <td>1987-11-12</td>
+      <td>Man</td>
+      <td>012345678</td>
+      <td>0905444444</td>
+      <td>Jhon@gmail.com</td>
+      <td>America</td>
+      <td>Diamond</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-delete" data-toggle="modal" data-target="#deleteModal">
+          Delete
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary btn-view" data-toggle="modal" data-target="#editModal">
+          Edit
+        </button>
+
+      </td>
+
+    </tr>
+    </tbody>
+
+  </table>
+
+  <nav aria-label="Page navigation example" class="text-center">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- Modal delete-->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times</span>
+          </button>
+        </div>
+        <div class="modal-body">Do you want to delete</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a id="link-delete" class="btn btn-danger" href="">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal edit-->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabe" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabe">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times</span>
+          </button>
+        </div>
+        <div class="modal-body">Do you want to edit</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a id="link-edit" class="btn-primary" href="">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--<div class="container-fluid">-->
+  <!--    <div class="row">-->
+  <!--        <div class="col-lg-12">-->
+  <!--            <p class="text-lg-start fs-5">All in one</p>-->
+  <!--        </div>-->
+  <!--    </div>-->
+  <!--</div>-->
+
+  <br>
+
+
+
+<app-footer></app-footer>

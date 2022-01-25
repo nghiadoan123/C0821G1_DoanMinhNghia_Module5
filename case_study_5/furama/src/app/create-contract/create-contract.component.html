@@ -1,0 +1,119 @@
+<p>create-contract works!</p>
+
+<app-header></app-header>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3>Create Contract</h3>
+      <p>Up the best of Service to you.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12  text-center">
+      <span><a href="#" class="text-decoration-none text-primary fs-6">Explore ></a></span>
+      <span> <a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></span>
+    </div>
+  </div>
+</div>
+
+<hr class="dropdown-divider">
+
+
+<div style="padding: 15px" id="form" class="mb-6 row">
+  <form action="#"
+        method="POST" novalidate="novalidate">
+
+    <div class="mb-6 row">
+      <label class="col-sm-2 col-form-label">Id</label>
+      <div class="col-sm-10">
+        <input type="text" readonly />
+      </div>
+    </div>
+
+
+    <div class="mb-6 row">
+      <label class="col-sm-2 col-form-label">checkIn</label>
+      <div class="col-sm-10">
+        <input type="date" />
+        <!--                <p class="text-danger" th:if="${#fields.hasErrors('checkIn')}" th:errors="*{checkIn}"></p>-->
+      </div>
+    </div>
+
+    <div class="mb-6 row">
+      <label class="col-sm-2 col-form-label">checkOut</label>
+      <div class="col-sm-10">
+        <input type="date" />
+        <!--                <p class="text-danger" th:if="${#fields.hasErrors('checkOut')}" th:errors="*{checkOut}"></p>-->
+      </div>
+    </div>
+
+
+    <div class="mb-6 row">
+      <label class="col-sm-2 col-form-label">deposit</label>
+      <div class="col-sm-10">
+        <input type="text" />
+        <!--                <p class="text-danger" ></p>-->
+      </div>
+    </div>
+
+
+    <div class="mb-6 row">
+      <label class="col-sm-2 col-form-label">totalMoney</label>
+      <div class="col-sm-10">
+        <input type="text"/>
+        <!--                <p class="text-danger"></p>-->
+      </div>
+    </div>
+
+
+    <div class="mb-6 row">
+      <label class="col-sm-2 col-form-label">customer</label>
+      <div class="col-sm-10">
+        <!--                <select >-->
+        <!--                    <option th:each="customer : ${customerList}" th:value="${customer.id}" th:text="${customer.name}">-->
+
+        <!--                    </option>-->
+        <!--                </select>-->
+        <input type="text" />
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">employee</label>
+      <div class="col-sm-10">
+        <!--                <select th:field="*{employee}">-->
+        <!--                    <option th:each="employee : ${employeeList}" th:value="${employee.id}" th:text="${employee.name}">-->
+
+        <!--                    </option>-->
+        <!--                </select>-->
+
+        <input type="text" />
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">service</label>
+      <div class="col-sm-10">
+        <select>
+          <option>Villa</option>
+          <option>House</option>
+          <option>Room</option>
+        </select>
+      </div>
+    </div>
+
+    <input class="btn-primary" type="submit" value="Edit"/>
+  </form>
+
+</div>
+  <hr class="dropdown-divider">
+
+
+
+<app-footer></app-footer>
