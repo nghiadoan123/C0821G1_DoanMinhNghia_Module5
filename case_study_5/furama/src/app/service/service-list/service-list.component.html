@@ -24,7 +24,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12  text-center">
-      <img src="images/anh%20nen.jpg " width="100%" alt="">
+      <img src="../../../assets/images/anh%20nen.jpg " width="100%" alt="">
     </div>
   </div>
 </div>
@@ -45,7 +45,7 @@
   <div class="row">
     <div class="col-lg-3 bg-light">
       <div class="col-lg-12">
-        <img src="images/room.jpg " width="100%" height="200px" alt="">
+        <img src="../../../assets/images/room.jpg " width="100%" height="200px" alt="">
         <span class="badge bg-secondary badge bg-warning text-dark">New</span>
         <span class="text-decoration-none text  fs-6">OCEAN STUDIO SUIT</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">Best Service ></a></h3>
@@ -65,7 +65,7 @@
 
     <div class="col-lg-3 bg-light">
       <div class="col-lg-12">
-        <img src="images/room_2.jpg" width="100%" height="200px" alt="">
+        <img src="../../../assets/images/room_2.jpg" width="100%" height="200px" alt="">
         <span class="badge bg-secondary badge bg-warning text-dark">New</span>
         <span class="text-decoration-none text  fs-6">OCEAN SUIT</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">>Best Services ></a></h3>
@@ -84,7 +84,7 @@
 
     <div class="col-lg-3 bg-light">
       <div class="col-lg-12">
-        <img src="images/room_3.jpg" width="100%" height="200px" alt="">
+        <img src="../../../assets/images/room_3.jpg" width="100%" height="200px" alt="">
         <span class="badge bg-secondary badge bg-warning text-dark">New</span>
         <span class="text-decoration-none text  fs-6">OCEAN SUIT</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">>Best Service ></a></h3>
@@ -103,7 +103,7 @@
 
     <div class="col-lg-3 bg-light">
       <div class="col-lg-12">
-        <img src="images/room.jpg " width="100%" height="200px" alt="">
+        <img src="../../../assets/images/room.jpg" width="100%" height="200px" alt="">
         <span class="badge bg-secondary badge bg-warning text-dark">New</span>
         <span class="text-decoration-none text  fs-6">OCEAN STUDIO SUIT</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">Best Service ></a></h3>
@@ -139,7 +139,7 @@
   <div class="row bg-light">
     <div class="col-lg-3 bg-light">
       <div class="col-lg-12 bg-light">
-        <img src="images/villa_1.jpg " width="100%" height="200px" alt="">
+        <img src="../../../assets/images/villa_1.jpg " width="100%" height="200px" alt="">
         <span class="badge bg-secondary badge bg-warning text-dark">New</span>
         <span class="text-decoration-none text  fs-6">VILLA A</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></h3>
@@ -158,7 +158,7 @@
 
     <div class="col-lg-3">
       <div class="col-lg-12">
-        <img src="images/villa_2.jpg" width="100%" height="200px" alt="">
+        <img src="../../../assets/images/villa_2.jpg" width="100%" height="200px" alt="">
         <span class="text-decoration-none text  fs-6">VILLA B</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></h3>
       </div>
@@ -176,7 +176,7 @@
 
     <div class="col-lg-3">
       <div class="col-lg-12">
-        <img src="images/villa_3.jpg" width="100%" height="200px" alt="">
+        <img src="../../../assets/images/villa_3.jpg" width="100%" height="200px" alt="">
         <span class="text-decoration-none text  fs-6">VILLA C</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></h3>
       </div>
@@ -194,17 +194,17 @@
 
     <div class="col-lg-3">
       <div class="col-lg-12">
-        <img src="images/villa_4.jpg" width="100%" height="200px" alt="">
+        <img src="../../../assets/images/villa_4.jpg" width="100%" height="200px" alt="">
         <span class="text-decoration-none text  fs-6">VILLA D</span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></h3>
       </div>
 
       <div>
-        <button type="button" class="btn btn-primary btn-view" data-toggle="modal" data-target="#deditModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
           Edit
         </button>
 
-        <button type="button" class="btn btn-danger btn-delete" data-toggle="modal" data-target="#deleteModal">
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
           Delete
         </button>
       </div>
@@ -213,39 +213,41 @@
 </div>
 
 
-<!-- Modal delete-->
+
+<!--delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">Do you want to delete</div>
+      <div class="modal-body">
+        ...
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a id="link-delete" class="btn btn-danger" href="">Delete</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 
+
 <!-- Modal edit-->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel_1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLabel_1">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">Do you want to edit</div>
+      <div class="modal-body">
+        ...
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a id="link-edit" class="btn-primary" href="">Edit</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

@@ -27,7 +27,7 @@ export class ProductPageComponent implements OnInit {
 
   changeStockValue(p: any) {
     this.productToUpdate = this.products.find(
-      elementProduct => elementProduct.id === p.id);
+      ele => ele.id === p.id);
     // for (const elementProduct of this.products) {
     //   if (elementProduct.id === p.id) {
     //     this.productToUpdate = elementProduct;

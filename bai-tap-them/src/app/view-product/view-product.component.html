@@ -1,0 +1,9 @@
+<p>view-product works!</p>
+<p>{{productDetail.id}}</p>
+<p>{{productDetail.name}}</p>
+<p [ngSwitch]="productDetail.gender">
+  <span *ngSwitchCase="0">Male</span>
+  <span *ngSwitchCase="1">Female</span>
+  <span *ngSwitchDefault>Other</span>
+</p>
+<p>{{productDetail.point}}</p>
