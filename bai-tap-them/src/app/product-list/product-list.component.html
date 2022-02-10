@@ -5,14 +5,14 @@
   <h2>Product Information</h2>
   <table border="1px" >
     <tr>
-<!--      <th>No</th>-->
+      <!--      <th>No</th>-->
       <th>id</th>
       <th>Name</th>
       <th>Gender</th>
       <th>Point</th>
     </tr>
     <tr *ngFor="let product of productList; index as i" (click)="viewDetail(product)">
-<!--      <td>{{i+1}}</td>-->
+      <!--      <td>{{i+1}}</td>-->
       <td>{{product.id}}</td>
       <td>{{product.name}}</td>
       <td [ngSwitch]="product.gender">
@@ -21,9 +21,11 @@
         <span *ngSwitchDefault>Other</span>
       </td>
       <td>{{product.point}}</td>
-      <td (click)="delete(product)">delete</td>
+      <td ><button (click)="delete(product)">delete</button></td>
+<!--      <td ><button (click)="edit(product)">edit</button></td>-->
     </tr>
   </table>
 </div>
 
-<app-view-product [productDetail]="productDetail"></app-view-product>
+<app-view-product [productView]="productDetail"></app-view-product>
+

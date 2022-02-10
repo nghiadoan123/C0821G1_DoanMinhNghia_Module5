@@ -1,0 +1,108 @@
+<p>register works!</p>
+
+<p>login-form works!</p>
+
+
+<form class="container-fluid"
+      [formGroup]='registerForm'
+      (ngSubmit)="onSubmit()"
+      novalidate
+>
+  <div class="mb-3 col-6">
+    <label for="email" class="form-label">Email address</label>
+    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+    formControlName="email">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div
+    *ngIf="!email.valid && (email.dirty||email.touched)">
+    Email is not valid ex: jhon@gmail.com
+  </div>
+
+  <div class="mb-3 col-6">
+    <label for="passWordForm" class="form-label">Password</label>
+    <input
+      type="text" class="form-control" id="passWordForm"
+      formControlName="passWord">
+  </div>
+
+  <div
+    *ngIf="!pass.valid && (pass.dirty||pass.touched)">
+    pass word is not valid
+  </div>
+
+
+
+  <div class="mb-3 col-6">
+    <label  class="form-label">Confirm Password</label>
+    <input type="text" class="form-control"
+           formControlName="confirmPassword">
+  </div>
+
+<!--  <div *ngIf="!numVal.valid && (numVal.dirty ||numVal.touched)">-->
+<!--    <div *ngIf="numVal.errors.comparePassword">-->
+<!--      The number should be greater than-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div
+    *ngIf="!confirm.valid && (confirm.dirty||confirm.touched)">
+    pass word is not valid
+  </div>
+
+
+  <div class="mb-3 col-6">
+  <label for="country" class="form-label">Country</label>
+    <select name="country" id="country" formControlName="country">
+      <option  *ngFor="let c of countryList" [ngValue]="c" selected>{{c['country']}}
+      </option>
+    </select>
+
+
+<!--    <select name="country" id="country" formControlName="country" >-->
+<!--      <option value="VN" selected>VN</option>-->
+<!--      <option value="USA">USA</option>-->
+<!--      <option value="ENG">ENG</option>-->
+<!--    </select>-->
+</div>
+
+  <div class="mb-3 col-6">
+    <label for="age" class="form-label">Age</label>
+    <input
+      name="age" type="text" class="form-control" id="age"
+     formControlName="age">
+  </div>
+
+  <div
+    *ngIf="!age.valid && (age.dirty||age.touched)">
+    age  is not valid age from(18-100)
+  </div>
+
+  <div class="mb-3 col-6">
+    <label for="gender" class="form-label" >Gender</label>
+    <input type="radio" checked="checked" id="gender" value="Male" formControlName="gender" style="margin: 5px"><span>Male</span>
+    <input type="radio" checked="checked"  value="Female" formControlName="gender" style="margin: 5px"><span>FeMale</span>
+  </div>
+
+  <div
+    *ngIf="!gender.valid && (gender.dirty||gender.touched)">
+    gender is not valid
+  </div>
+
+  <div class="mb-3 col-6">
+    <label for="phone" class="form-label">Phone</label>
+    <input
+      name="phone" type="text" class="form-control" id="phone"
+      formControlName="phone">
+  </div>
+
+
+  <div
+    *ngIf="!phone.valid && (phone.dirty||phone.touched)">
+    phone is not valid
+  </div>
+
+  <button type="submit" class="btn btn-primary"  [disabled]="!registerForm.valid">Submit
+
+  </button>
+</form>

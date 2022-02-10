@@ -1,0 +1,192 @@
+<p>facility-edit works!</p>
+
+<div id="form" class="mb-3 row bg-light" style="padding-left: 50px">
+  <form novalidate="novalidate" [formGroup]="facilityForm" (ngSubmit)="update(id)">
+
+        <div class="mb-3 row">
+          <label  class="col-sm-2 col-form-label">Id</label>
+          <div class="col-sm-10">
+            <input type="text"  readonly formControlName="id"/>
+          </div>
+        </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="name" />
+      </div>
+    </div>
+
+    <div
+      *ngIf="!name.valid && (name.dirty||name.touched)" style="color: red">
+      Name is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">codeService</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="codeService"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!codeService.valid && (codeService.dirty||codeService.touched)" style="color: red">
+      codeService is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">area</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="area"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!area.valid && (area.dirty||area.touched)" style="color: red">
+      area is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">cost</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="cost"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!cost.valid && (cost.dirty||cost.touched)" style="color: red">
+      cost is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">numberOfPerson</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="numberOfPerson"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!numberOfPerson.valid && (numberOfPerson.dirty||numberOfPerson.touched)" style="color: red">
+      numberOfPerson is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">standardRoom</label>
+      <div class="col-sm-10">
+        <!--        <input type="text"  formControlName="standardRoom"/>-->
+        <select name="" id="" formControlName="standardRoom"  class="width-select">
+          <option value="Normal">Normal</option>
+          <option value="VIP">VIP</option>
+        </select>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!standardRoom.valid && (standardRoom.dirty||standardRoom.touched)" style="color: red">
+      standardRoom is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">description</label>
+      <div class="col-sm-10">
+        <!--        <input type="text"  formControlName="description"/>-->
+        <select name="" formControlName="description"  class="width-select">
+          <option value="OK">OK</option>
+          <option value="NG">NG</option>
+        </select>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!description.valid && (description.dirty||description.touched)" style="color: red">
+      description is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">poolArea</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="poolArea"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!poolArea.valid && (poolArea.dirty||poolArea.touched)" style="color: red">
+      poolArea is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">numberOfFloor</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="numberOfFloor"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!numberOfFloor.valid && (numberOfFloor.dirty||numberOfFloor.touched)" style="color: red">
+      numberOfFloor is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">rentalType</label>
+      <div class="col-sm-10">
+        <!--        <input type="text"  formControlName="rentalType"/>-->
+        <select name="" formControlName="rentalType"  class="width-select">
+          <option value="Year">Year</option>
+          <option value="Month">Month</option>
+          <option value="Day">Day</option>
+        </select>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!rentalType.valid && (rentalType.dirty||rentalType.touched)" style="color: red">
+      rentalType is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">serviceType</label>
+      <div class="col-sm-10">
+        <!--        <input type="text"  formControlName="serviceType"/>-->
+        <select name=""  formControlName="serviceType" class="width-select">
+          <option value="Villa" selected>Villa</option>
+          <option value="House">House</option>
+          <option value="Room">Room</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div
+      *ngIf="!serviceType.valid && (serviceType.dirty||serviceType.touched)" style="color: red">
+      serviceType is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">image</label>
+      <div class="col-sm-10">
+        <!--        <input type="text"  formControlName="image"/>-->
+        <select name=""  formControlName="image" class="width-select">
+          <option value="http://localhost:4200/assets/images/room.jpg" selected >Room1</option>
+          <option value="http://localhost:4200/assets/images/room_2.jpg">Room2</option>
+          <option value="http://localhost:4200/assets/images/room_3.jpg">Room3</option>
+          <option value="http://localhost:4200/assets/images/villa_1.jpg">Villa1</option>
+          <option value="http://localhost:4200/assets/images/villa_2.jpg">Villa2</option>
+          <option value="http://localhost:4200/assets/images/villa_3.jpg">Villa3</option>
+          <option value="http://localhost:4200/assets/images/villa_4.jpg">Villa4</option>
+        </select>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!image.valid && (image.dirty||image.touched)" style="color: red">
+      image is not valid
+    </div>
+
+    <div class="row">
+      <div class="">
+        <input type="submit" class="btn btn-warning col-2 container-fluid" value="Edit"/>
+      </div>
+    </div>
+
+  </form>
+</div>

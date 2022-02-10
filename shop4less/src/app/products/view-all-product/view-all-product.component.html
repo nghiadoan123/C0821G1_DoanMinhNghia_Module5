@@ -1,0 +1,20 @@
+<p>view-all-product works!</p>
+<!-- Related items section-->
+<div class="row">
+  <div class="col-lg-4 mb-4 col-md-6" *ngFor="let pro of productList">
+    <div class="card h-100">
+      <a href=""><img class="card-img-top" src="{{pro['productImg']}}" alt=""></a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a routerLink="/products/view-product/{{pro.id}}">{{pro["productName"]}}</a>
+        </h4>
+        <h5>{{pro['price']}}</h5>
+        review
+        <p>{{pro['reviews']}}</p>
+      </div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+  </div>
+</div>

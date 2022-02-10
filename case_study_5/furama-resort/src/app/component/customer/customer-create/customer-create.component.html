@@ -1,0 +1,139 @@
+<p>customer-create works!</p>
+
+<div id="form" class="mb-3 row" style="padding-left: 50px">
+  <form novalidate="novalidate" [formGroup]="customerForm" (ngSubmit)="create()">
+
+    <!--    <div class="mb-3 row">-->
+    <!--      <label  class="col-sm-2 col-form-label">Id</label>-->
+    <!--      <div class="col-sm-10">-->
+    <!--        <input type="text" formControlName="id"/>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">Name</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="name"/>
+      </div>
+
+    </div>
+    <div
+      *ngIf="!name.valid && (name.dirty||name.touched)" style="color: red">
+      name is not valid
+    </div>
+
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">codeNumber</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="codeNumber"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!codeNumber.valid && (codeNumber.dirty||codeNumber.touched)" style="color: red">
+      codeNumber is not valid ex: KH-0000
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">BirthDay</label>
+      <div class="col-sm-10 padding">
+        <input class="width-select" type="date" formControlName="birthDay"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="(!birthDay.valid && (birthDay.dirty||birthDay.touched))" style="color: red">
+      birthDay is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">Gender</label>
+      <div class="col-sm-10 padding">
+        <select name="gender" id="gender" formControlName="gender" class="width-select">
+          <option value="Man" selected>Man</option>
+          <option value="Woman">Woman</option>
+        </select>
+        <!--        <input type="text"  formControlName="gender"/>-->
+      </div>
+    </div>
+
+    <div
+      *ngIf="!gender.valid && (gender.dirty||gender.touched)" style="color: red">
+      gender is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">IdCard</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="idCard"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!idCard.valid && (idCard.dirty||idCard.touched)" style="color: red">
+      idCard is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">Phone</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="phone"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!phone.valid && (phone.dirty||phone.touched)" style="color: red">
+      phone is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">Email</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="email"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!email.valid && (email.dirty||email.touched)" style="color: red">
+      email is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">Address</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="address"/>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!address.valid && (address.dirty||address.touched)" style="color: red">
+      address is not valid
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-md-2 col-form-label">Customer Type</label>
+      <div class="col-sm-10 padding">
+        <select name="customerType" id="customerType" formControlName="customerType" class="width-select">
+          <option value="Diamond">Diamond</option>
+          <option value="Platinium">Platinium</option>
+          <option value="Gold">Gold</option>
+          <option value="Silver">Silver</option>
+          <option value="Member">Member</option>
+        </select>
+        <!--        <input type="text"  formControlName="customerType"/>-->
+      </div>
+    </div>
+
+    <div
+      *ngIf="!customerType.valid && (customerType.dirty||customerType.touched)" style="color: red">
+      customer Type is not valid
+    </div>
+
+    <div class="row container-fluid ps-2">
+      <input type="submit" class="btn btn-warning" value="Create" [disabled]="!customerForm.valid"/>
+    </div>
+
+  </form>
+
+</div>

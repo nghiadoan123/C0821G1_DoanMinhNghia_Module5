@@ -1,0 +1,23 @@
+{
+  "products": [],
+  "categories": [
+    {
+      "name": "888888888",
+      "id": 4
+    },
+    {
+      "name": "3333333",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

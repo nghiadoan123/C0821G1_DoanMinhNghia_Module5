@@ -7,14 +7,16 @@ import {Product} from '../product';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  public productList =[];
+  public productList = [];
   productDetail: Product;
+  productEdit: Product;
 
-  products(){
+  products() {
     this.productList.push(new Product(1, 'nguyen van a', 1, 6));
     this.productList.push(new Product(2, 'nguyen van b', 0, 8));
     this.productList.push(new Product(3, 'nguyen van c', 1, 9));
   }
+
   constructor() {
   }
 
@@ -33,9 +35,9 @@ export class ProductListComponent implements OnInit {
 
   delete(product: Product) {
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.productList.length ; i++) {
-      if (product.id === this.productList[i].id){
-        this.productList.splice(i);
+    for (let i = 0; i < this.productList.length; i++) {
+      if (product.id === this.productList[i].id) {
+        this.productList.splice(i, 1);
       }
     }
   }

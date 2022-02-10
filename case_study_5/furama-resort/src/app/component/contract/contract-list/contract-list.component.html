@@ -1,0 +1,94 @@
+<p>contract-list works!</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3>Contract List</h3>
+      <p>Up the best of Service to you.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12  text-center">
+      <span><a href="#" class="text-decoration-none text-primary fs-6">Explore ></a></span>
+      <span> <a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid px-5">
+  <div class="row">
+    <div class="col-lg-12  text-lg-start">
+      <!--        <button type="button" routerLink="/customer/create" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add new Customer</button>-->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">Add new Contract
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div class="row container-fluid p-5">
+  <table class="table table-striped w-100 mx-auto">
+    <thead class="thead-inverse">
+    <tr>
+      <th>ID</th>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th>Deposit</th>
+      <th>Total Money</th>
+      <th>Customer Id</th>
+      <th>Customer type</th>
+      <th>Customer Code</th>
+      <th>Facility Id</th>
+      <th>Facility Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let contract of contractList">
+      <td>{{contract.id}}</td>
+      <td>{{contract.checkIn}}</td>
+      <td>{{contract.checkOut}}</td>
+      <td>{{contract.deposit}}</td>
+      <td>{{contract.totalMoney}}</td>
+      <td>{{contract.customer.id}}</td>
+      <td>{{contract.customer.customerType}}</td>
+      <td>{{contract.customer.codeNumber}}</td>
+      <td>{{contract.facility.id}}</td>
+      <td>{{contract.facility.codeService}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example" class="text-center">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h3 class="modal-title text-opacity-75 text-black-50" id="staticBackdropLabel">Create New</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-light">
+          <app-contract-create></app-contract-create>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

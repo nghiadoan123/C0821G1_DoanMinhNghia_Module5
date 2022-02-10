@@ -1,0 +1,18 @@
+<p>category-delete works!</p>
+<h1>Xóa thông tin danh mục sản phẩm</h1>
+<form [formGroup]="categoryForm" (ngSubmit)="delete()">
+  <table>
+    <tr>
+      <td>Mã danh mục:</td>
+      <td><input type="number" formControlName="id" readonly></td>
+    </tr>
+    <tr>
+      <td>Tên danh mục:</td>
+      <td><input type="text" formControlName="name" readonly></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Xóa</button></td>
+    </tr>
+  </table>
+</form>

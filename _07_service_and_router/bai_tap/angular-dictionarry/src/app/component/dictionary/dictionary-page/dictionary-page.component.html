@@ -1,0 +1,17 @@
+<p>dictionary-page works!</p>
+<h1>dictionary-page</h1>
+<table border="1px">
+  <tr>
+    <td>No</td>
+    <td>Word</td>
+    <td>Mean</td>
+    <td>Detail</td>
+
+  </tr>
+  <tr *ngFor="let dic of dictionaries; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{dic.word}}</td>
+    <td>{{dic.mean}}</td>
+    <td><button><a style="text-decoration: none" [routerLink]="['/dictionary/detail', dic.word]">detail</a></button></td>
+  </tr>
+</table>

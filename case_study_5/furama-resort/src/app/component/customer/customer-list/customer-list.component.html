@@ -1,0 +1,111 @@
+<p>customer-list works!</p>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3>Customer List</h3>
+      <p>Up the best of Service to you.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12  text-center">
+      <span><a href="#" class="text-decoration-none text-primary fs-6">Explore ></a></span>
+      <span> <a href="#" class="text-decoration-none text-primary  fs-6">Top Surface deals ></a></span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid px-5">
+  <div class="row">
+    <div class="col-lg-12  text-lg-start">
+      <!--        <button type="button" routerLink="/customer/create" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add new Customer</button>-->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">Add new Customer
+      </button>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar">
+  <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
+         placeholder="enter your name">
+</nav>
+
+<div class="container-fluid p-5">
+  <div class="row">
+    <!--    <table class="table table-striped w-50 mx-auto" matSort (matSortChange)="sortData($event)">-->
+    <table class="table table-striped w-100 mx-0">
+      <thead class="thead-inverse">
+      <tr>
+        <th (click)="sort('id')">ID &nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('name')">Name &nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('codeNumber')">Code Number</th>
+        <th (click)="sort('birthDay')">Birth Day&nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('gender')">Gender&nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('idCard')">Id Card&nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('phone')">Phone&nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('email')">Email&nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('address')">Address&nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('customerType')">Customer Type&nbsp;<i class="fa fa-sort"></i></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cus of customers | orderBy: key: reverse | paginate: {itemsPerPage:3,currentPage:page}">
+        <td>{{cus.id}}</td>
+        <td>{{cus.name}}</td>
+        <td>{{cus.codeNumber}}</td>
+        <td>{{cus.birthDay}}</td>
+        <td>{{cus.gender}}</td>
+        <td>{{cus.idCard}}</td>
+        <td>{{cus.phone}}</td>
+        <td>{{cus.email}}</td>
+        <td>{{cus.address}}</td>
+        <td>{{cus.customerType}}</td>
+        <td class="r-o">
+          <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger"
+                  (click)="delete(cus.id)">
+            Delete
+          </button>
+        </td>
+        <!--        <td class="r-o"><button [routerLink]="['/customer/delete',cus.id]" data-toggle="modal" data-target="#deleteModal"-->
+        <!--                           class="btn btn-danger"  onclick="return confirm('Do you want to delete?')">Delete</button>-->
+        <!--        </td>-->
+        <td class="r-o">
+          <button [routerLink]="['/customer/edit',cus.id]" data-toggle="modal" data-target="#myModal"
+                  class="btn btn-primary">
+            Edit
+          </button>
+
+        </td>
+      </tr>
+      </tbody>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </table>
+
+    <!--    &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+    <!--    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">-->
+    <!--      Launch static backdrop modal-->
+    <!--    </button>-->
+
+    <!--Create Modal -->
+    <div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-warning">
+            <h3 class="modal-title text-opacity-75 text-black-50" id="staticBackdropLabel">Create New</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body bg-light">
+            <app-customer-create></app-customer-create>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

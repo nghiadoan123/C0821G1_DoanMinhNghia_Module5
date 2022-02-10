@@ -1,0 +1,14 @@
+<h1 class="my-4">Shop Name</h1>
+<a class="list-group-item" [routerLink]="['/products']">
+  View All Product
+</a>
+<div class="list-group" *ngFor="let cate of categoryList">
+<!--  <a class="list-group-item" [routerLink]="['/products/category',cate.id]">-->
+<!--    {{ cate["categoryName"]}}-->
+<!--  </a>-->
+<!--  có thể dùng với thẻ a không dùng với routerLink-->
+  <a class="list-group-item" href="products/category/{{cate.id}}">
+    {{ cate["categoryName"]}}
+  </a>
+
+</div>

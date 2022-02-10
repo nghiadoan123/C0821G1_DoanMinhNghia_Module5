@@ -1,0 +1,46 @@
+<p>login-form works!</p>
+
+<!--<form class="container-fluid" #createLogin = "ngForm"-->
+<!--  (submit)="onSubmit(createLogin)"-->
+<!--&gt;-->
+
+<form class="container-fluid"
+      [formGroup]='contactForm'
+      (ngSubmit)="onSubmit()"
+      novalidate
+>
+  <div class="mb-3 col-6">
+    <label for="email" class="form-label">Email address</label>
+    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+           formControlName="email"
+    >
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div
+    *ngIf="!contactForm.controls.email?.valid && (contactForm.controls.email?.dirty
+    ||contactForm.controls.email?.touched)">
+    Email is not valid ex: jhon@gmail.com
+  </div>
+  <div class="mb-3 col-6">
+    <label for="passWordForm" class="form-label">Password</label>
+    <input
+      name="password" type="text" class="form-control" id="passWordForm"
+      formControlName="passWord">
+  </div>
+  <div
+    *ngIf="!contactForm.controls.passWord?.valid && (contactForm.controls.passWord?.dirty
+    ||contactForm.controls.passWord?.touched)">
+    PassWord is not valid must be larger than 6 digrit
+  </div>
+  <button type="submit"
+          [disabled]="!contactForm.valid"
+          class="btn btn-primary">Submit
+  </button>
+</form>
+
+<!--lệnh  [disabled]="!contactForm.valid" khong hien thi nut submitt khi chua nhap dung dinh dang-->
+<!--<button type="submit"-->
+<!--        [disabled]="!contactForm.valid"-->
+<!--        class="btn btn-primary">Submit-->
+<!--</button>-->
+

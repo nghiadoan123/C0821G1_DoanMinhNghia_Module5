@@ -1,0 +1,102 @@
+<p>facility-delete works!</p>
+
+<div id="form" class="mb-3 row" style="padding-left: 50px">
+  <form novalidate="novalidate" [formGroup]="facilityForm" (ngSubmit)="delete(id)">
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">Id</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="id"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="name" />
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">codeService</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="codeService"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">area</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="area"/>
+      </div>
+    </div>
+
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">cost</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="cost"/>
+      </div>
+    </div>
+
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">numberOfPerson</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="numberOfPerson"/>
+      </div>
+    </div>
+
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">standardRoom</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="standardRoom"/>
+      </div>
+    </div>
+
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">description</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="description"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">poolArea</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="poolArea"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">numberOfFloor</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="numberOfFloor"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">rentalType</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="rentalType"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">serviceType</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="serviceType"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label  class="col-sm-2 col-form-label">image</label>
+      <div class="col-sm-10">
+        <input type="text"  formControlName="image"/>
+      </div>
+    </div>
+    <input type="submit" value="Remove"/>
+  </form>
+</div>

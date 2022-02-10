@@ -1,0 +1,62 @@
+<p>create-product works!</p>
+<form [formGroup]="productForm" (ngSubmit)="createProduct()">
+  <table>
+    <tr>
+      <td>Mã sản phẩm:</td>
+      <td><input type="text" formControlName="id"></td>
+      <td><input type="text"  hidden value="" formControlName="productImg"></td>
+    </tr>
+    <tr>
+      <td>productName</td>
+      <td><input type="text" formControlName="productName"></td>
+      <td>categoryId</td>
+      <td>
+<!--        <input type="text" formControlName="categoryId">-->
+        <select name=""  formControlName="categoryId">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>description</td>
+      <td><input type="text" formControlName="description"></td>
+      <td>rating</td>
+      <td>
+<!--        <input type="text" formControlName="rating">-->
+        <select name="" id="" formControlName="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>price</td>
+      <td><input type="text" formControlName="price"></td>
+      <td>isAvailable</td>
+      <td>
+<!--        <input type="text" formControlName="isAvailable">-->
+        <select name=""  formControlName="isAvailable">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>color</td>
+      <td><input type="text" formControlName="color"></td>
+      <td>review</td>
+      <td><input type="number" formControlName="reviews"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Tạo mới</button></td>
+    </tr>
+  </table>
+</form>
