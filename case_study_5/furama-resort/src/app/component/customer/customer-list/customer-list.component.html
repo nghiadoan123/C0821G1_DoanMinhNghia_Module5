@@ -53,7 +53,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let cus of customers | orderBy: key: reverse | paginate: {itemsPerPage:3,currentPage:page}">
+      <tr *ngFor="let cus of customers | orderBy: key: reverse | paginate: {itemsPerPage:5,currentPage:page}">
         <td>{{cus.id}}</td>
         <td>{{cus.name}}</td>
         <td>{{cus.codeNumber}}</td>

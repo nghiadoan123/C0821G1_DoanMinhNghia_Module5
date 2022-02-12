@@ -9,6 +9,7 @@ import {Contract} from '../../../model/contract';
 })
 export class ContractListComponent implements OnInit {
   contractList: Contract[] = [];
+  page = 1;
 
   constructor(private contractService: ContractService) {
   }

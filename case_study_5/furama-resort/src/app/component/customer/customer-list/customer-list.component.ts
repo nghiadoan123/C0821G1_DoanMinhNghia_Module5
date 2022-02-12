@@ -61,9 +61,9 @@ export class CustomerListComponent implements OnInit {
   }
 
   getAll() {
-    this.customerService.getAll().subscribe(customerList => {
-      console.log(customerList);
-      this.customers = customerList;
+    this.customerService.getAll().subscribe(list => {
+      console.log(list);
+      this.customers = list;
       // this.sortedData = this.customers.slice();
     });
   }
