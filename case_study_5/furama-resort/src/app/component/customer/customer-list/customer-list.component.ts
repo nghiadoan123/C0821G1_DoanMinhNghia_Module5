@@ -54,6 +54,7 @@ export class CustomerListComponent implements OnInit {
   public key = '';
   public reverse = false;
   page = 1;
+  converse: true;
 
   ngOnInit(): void {
     this.getAll();

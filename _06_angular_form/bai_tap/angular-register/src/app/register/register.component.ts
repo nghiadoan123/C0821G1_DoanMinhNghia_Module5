@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Country} from '../country';
-
-
+import {comparePassword} from './user-name.validator';
 
 @Component({
   selector: 'app-register',
@@ -11,27 +10,13 @@ import {Country} from '../country';
 })
 export class RegisterComponent implements OnInit {
   // form: FormGroup;
-
-  error = '';
   registerForm: FormGroup;
+  submitted = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
   }
 
   countryList = new Array();
-
-  // @ts-ignore
-  registerForm = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
-    passWord: new FormControl('', [Validators.minLength(6)]),
-    confirmPassword: new FormControl('', [Validators.minLength(6)]),
-    country: new FormControl(),
-    age: new FormControl('', [Validators.required, Validators.min(18), Validators.max(100)]),
-    gender: new FormControl('', [Validators.required]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('\\+84\\d{9,10}')])
-  });
-
-
 
   getCountryList() {
     return [
@@ -41,20 +26,8 @@ export class RegisterComponent implements OnInit {
     ];
   }
 
-  get numVal() {
-    return this.registerForm.get('numVal');
-  }
-
   get email() {
     return this.registerForm.get('email');
-  }
-
-  get pass() {
-    return this.registerForm.get('passWord');
-  }
-
-  get confirm() {
-    return this.registerForm.get('confirmPassword');
   }
 
   get age() {
@@ -77,18 +50,38 @@ export class RegisterComponent implements OnInit {
     //   age: ['', [Validators.required, Validators.min(18), Validators.max(100)]],
     //   gender: ['', [Validators.required]],
     //   phone: ['', [Validators.required, Validators.pattern('\\+84\\d{9,10}')]],
-    //   pw: this.fb.group({
-    //     password: ['', Validators.required],
-    //     confirmPassword: ['', Validators.required]
-    //   })
+    //   password: ['', [Validators.required, Validators.minLength(6)]],
+    //   confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+    // },  {
+    //   validators: comparePassword('password', 'confirmPassword')
     // });
+    this.registerForm = new FormGroup({
+      email: new FormControl('', [Validators.email, Validators.required]),
+      country: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.min(18), Validators.max(100)]),
+      gender: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required, Validators.pattern('\\+84\\d{9,10}')]),
+      pwGroup: new FormGroup({
+        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
+      }, this.checkPass)
+    });
   }
 
   onSubmit() {
-    if (this.pass !== this.confirm) {
-      this.error = ' pass confirm is not duplicate';
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
     }
-    console.log(this.registerForm.value);
-    console.log(this.error);
+
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
+  }
+
+  private checkPass(abstractControl: AbstractControl): any {
+    const passWord = abstractControl.value.password;
+    const confirmPass = abstractControl.value.confirmPassword;
+    return passWord === confirmPass ? null : {checkConfirm: true};
   }
 }

@@ -22,17 +22,22 @@
 <div class="container-fluid px-5">
   <div class="row">
     <div class="col-lg-12  text-lg-start">
-      <!--        <button type="button" routerLink="/customer/create" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add new Customer</button>-->
+      <!--        <button type="button" routerLink="/customer/create" class="btn btn-primary">Add new Customer</button>-->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">Add new Customer
       </button>
     </div>
   </div>
 </div>
 
-<nav class="navbar">
-  <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
-         placeholder="enter your name">
-</nav>
+<div class="container-fluid px-5">
+  <div class="col-3">
+    <nav class="navbar">
+      <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
+             placeholder="enter your search name">
+    </nav>
+  </div>
+
+</div>
 
 <div class="container-fluid p-5">
   <div class="row">
@@ -99,6 +104,7 @@
             <h3 class="modal-title text-opacity-75 text-black-50" id="staticBackdropLabel">Create New</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+
           <div class="modal-body bg-light">
             <app-customer-create></app-customer-create>
           </div>

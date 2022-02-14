@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
@@ -17,8 +17,8 @@ export class CustomerEditComponent implements OnInit {
   constructor(private customerService: CustomerService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
-    activatedRoute.paramMap.subscribe((praMap: ParamMap) =>{
-      this.id = + praMap.get('id');
+    activatedRoute.paramMap.subscribe((praMap: ParamMap) => {
+      this.id = +praMap.get('id');
       this.getCustomer(this.id);
     });
   }
@@ -31,16 +31,16 @@ export class CustomerEditComponent implements OnInit {
     this.customerService.findById(id).subscribe(customer => {
       console.log(customer);
       this.customerForm = new FormGroup({
-        id: new FormControl(customer.id,[Validators.required]),
-        name: new FormControl(customer.name,[Validators.required]),
-        email: new FormControl(customer.email,[Validators.required, Validators.email]),
-        address: new FormControl(customer.address,[Validators.required]),
-        phone: new FormControl(customer.phone,[Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
-        idCard: new FormControl(customer.idCard,[Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]),
+        id: new FormControl(customer.id, [Validators.required]),
+        name: new FormControl(customer.name, [Validators.required]),
+        email: new FormControl(customer.email, [Validators.required, Validators.email]),
+        address: new FormControl(customer.address, [Validators.required]),
+        phone: new FormControl(customer.phone, [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
+        idCard: new FormControl(customer.idCard, [Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]),
         gender: new FormControl(customer.gender, [Validators.required]),
         birthDay: new FormControl(customer.birthDay, [Validators.required]),
-        codeNumber: new FormControl(customer.codeNumber,[Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
-        customerType: new FormControl(customer.customerType,[Validators.required])
+        codeNumber: new FormControl(customer.codeNumber, [Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
+        customerType: new FormControl(customer.customerType, [Validators.required])
       });
     });
   }
@@ -53,6 +53,7 @@ export class CustomerEditComponent implements OnInit {
       this.router.navigate(['/customer/list']);
     });
   }
+
   get email() {
     return this.customerForm.get('email');
   }

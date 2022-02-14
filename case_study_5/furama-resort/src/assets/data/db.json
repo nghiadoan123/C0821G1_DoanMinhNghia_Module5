@@ -318,18 +318,18 @@
       "id": 15
     },
     {
-      "name": "Villa 3",
-      "codeService": "SV-0009",
+      "name": "Villa",
+      "codeService": "SV-1111",
       "area": "25",
-      "cost": "250",
-      "numberOfPerson": "4",
+      "cost": "25",
+      "numberOfPerson": "5",
       "standardRoom": "Normal",
       "description": "OK",
-      "poolArea": "2530",
-      "numberOfFloor": "4",
-      "rentalType": "Month",
-      "serviceType": "House",
-      "image": "http://localhost:4200/assets/images/villa_1.jpg",
+      "poolArea": "25",
+      "numberOfFloor": "3",
+      "rentalType": "Year",
+      "serviceType": "Villa",
+      "image": "http://localhost:4200/assets/images/villa_4.jpg",
       "id": 16
     }
   ],
@@ -707,6 +707,40 @@
         "id": 13
       },
       "id": 13
+    },
+    {
+      "checkIn": "2022-02-02",
+      "checkOut": "2022-02-11",
+      "deposit": "25",
+      "totalMoney": "2500",
+      "customer": {
+        "id": 6,
+        "name": "Nguyễn Khuyến",
+        "email": "k@gmail.com",
+        "address": "Đà Nẵng",
+        "phone": "0905112558",
+        "idCard": "222555666999",
+        "gender": "Man",
+        "birthDay": "1997-11-10",
+        "codeNumber": "KH-0001",
+        "customerType": "Platinium"
+      },
+      "facility": {
+        "id": 4,
+        "name": "OCEAN SEA VILLA",
+        "codeService": "DV-0003",
+        "area": "250",
+        "cost": 250,
+        "numberOfPerson": 4,
+        "standardRoom": "Normal",
+        "description": "OK",
+        "poolArea": 600,
+        "numberOfFloor": 2,
+        "rentalType": "Year",
+        "serviceType": "Villa",
+        "image": "http://localhost:4200/assets/images/villa_4.jpg"
+      },
+      "id": 14
     }
   ]
 }

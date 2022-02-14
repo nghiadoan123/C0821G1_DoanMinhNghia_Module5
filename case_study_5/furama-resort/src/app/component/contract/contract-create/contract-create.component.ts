@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Customer} from '../../../model/customer';
 import {Facility} from '../../../model/facility';
 import {CustomerService} from '../../../service/customer/customer.service';
@@ -7,6 +7,12 @@ import {FacilityService} from '../../../service/facility/facility.service';
 import {ContractService} from '../../../service/contract/contract.service';
 import {Contract} from '../../../model/contract';
 import {Router} from '@angular/router';
+
+function checkDay(abstractControl: AbstractControl) {
+  const checkIn = abstractControl.value.checkIn;
+  const checkOut = abstractControl.value.checkOut;
+  return checkOut >= checkIn ? null : {checkConfirm: true};
+}
 
 @Component({
   selector: 'app-contract-create',
@@ -16,8 +22,12 @@ import {Router} from '@angular/router';
 export class ContractCreateComponent implements OnInit {
   contractForm = new FormGroup({
     // id: new FormControl(),
-    checkIn: new FormControl('', [Validators.required]),
-    checkOut: new FormControl('', [Validators.required, Validators.email]),
+    checkInOut: new FormGroup({
+      checkIn: new FormControl('', [Validators.required]),
+      checkOut: new FormControl('', [Validators.required])
+    }, checkDay),
+    // checkIn: new FormControl('', [Validators.required]),
+    // checkOut: new FormControl('', [Validators.required, Validators.email]),
     deposit: new FormControl('', [Validators.required]),
     totalMoney: new FormControl('', [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
     customer: new FormControl('', [Validators.required]),
@@ -43,7 +53,7 @@ export class ContractCreateComponent implements OnInit {
     this.contractService.save(contract).subscribe(contractData => {
       console.log(contractData);
       this.router.navigate(['/contract/list']);
-    });
+    }, error => console.log(error));
   }
 
   getAllCustomer() {

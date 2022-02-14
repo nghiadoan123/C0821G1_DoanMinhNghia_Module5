@@ -19,43 +19,61 @@
     Email is not valid ex: jhon@gmail.com
   </div>
 
-  <div class="mb-3 col-6">
-    <label for="passWordForm" class="form-label">Password</label>
-    <input
-      type="text" class="form-control" id="passWordForm"
-      formControlName="passWord">
-  </div>
-
-  <div
-    *ngIf="!pass.valid && (pass.dirty||pass.touched)">
-    pass word is not valid
-  </div>
-
-
-
-  <div class="mb-3 col-6">
-    <label  class="form-label">Confirm Password</label>
-    <input type="text" class="form-control"
-           formControlName="confirmPassword">
-  </div>
-
-<!--  <div *ngIf="!numVal.valid && (numVal.dirty ||numVal.touched)">-->
-<!--    <div *ngIf="numVal.errors.comparePassword">-->
-<!--      The number should be greater than-->
+<!--  <div class="mb-3 col-6">-->
+<!--    <label>Password</label>-->
+<!--    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }" />-->
+<!--    <div *ngIf="submitted && !registerForm.controls.password.errors" class="invalid-feedback">-->
+<!--      <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>-->
+<!--      <div *ngIf="registerForm.controls.password.errors.minlength">Password must be at least 6 characters</div>-->
 <!--    </div>-->
 <!--  </div>-->
 
-  <div
-    *ngIf="!confirm.valid && (confirm.dirty||confirm.touched)">
-    pass word is not valid
+
+
+<!--  <div class="mb-3 col-6">-->
+<!--    <label>Confirm Password</label>-->
+<!--    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors }" />-->
+<!--    <div *ngIf="submitted && !registerForm.controls.confirmPassword.errors" class="invalid-feedback">-->
+<!--      <div *ngIf="registerForm.controls.confirmPassword.errors.required">Password is required</div>-->
+<!--      <div *ngIf="registerForm.controls.confirmPassword.errors.minlength">Password must be at least 6 characters</div>-->
+<!--      <div *ngIf="registerForm.controls.confirmPassword.errors.mustMatch">Passwords must match</div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+  <div class="mb-3 col-6" formGroupName="pwGroup">
+    <label for="email" class="form-label">Pass Word</label>
+    <input name="email" type="email" class="form-control" aria-describedby="emailHelp"
+           formControlName="password">
+    <label for="email" class="form-label">Confirm Pass Word</label>
+    <input name="email" type="email" class="form-control" aria-describedby="emailHelp"
+           formControlName="confirmPassword">
+    <p style="color: red"
+       *ngIf="registerForm.controls.pwGroup.hasError('checkConfirm')
+      && (registerForm.controls.pwGroup.dirty || registerForm.controls.pwGroup.touched)">
+      pass not match
+    </p>
+
+    <p style="color: red"
+       *ngIf="registerForm.get('pwGroup.confirmPassword').errors?.touched &&
+     registerForm.get('pwGroup.confirmPassword').errors?.required">
+      pass not requied
+    </p>
+
   </div>
+
+
+
 
 
   <div class="mb-3 col-6">
   <label for="country" class="form-label">Country</label>
     <select name="country" id="country" formControlName="country">
-      <option  *ngFor="let c of countryList" [ngValue]="c" selected>{{c['country']}}
+<!--      <option  *ngFor="let c of countryList" [ngValue]="c">{{c.name}}</option>-->
+      <option selected [value]="null" disabled>
+        select country
       </option>
+      <option *ngFor="let  c of countryList" [ngValue]="c">{{c.country}}</option>
     </select>
 
 
@@ -80,8 +98,8 @@
 
   <div class="mb-3 col-6">
     <label for="gender" class="form-label" >Gender</label>
-    <input type="radio" checked="checked" id="gender" value="Male" formControlName="gender" style="margin: 5px"><span>Male</span>
-    <input type="radio" checked="checked"  value="Female" formControlName="gender" style="margin: 5px"><span>FeMale</span>
+    <input type="radio"  id="gender" value="Male" formControlName="gender" style="margin: 5px"><span>Male</span>
+    <input type="radio"  value="Female" formControlName="gender" style="margin: 5px"><span>FeMale</span>
   </div>
 
   <div
@@ -102,7 +120,11 @@
     phone is not valid
   </div>
 
-  <button type="submit" class="btn btn-primary"  [disabled]="!registerForm.valid">Submit
+<!--  <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit-->
+
+<!--  </button>-->
+
+  <button class="btn btn-primary" [disabled]="!registerForm.valid">Submit
 
   </button>
 </form>

@@ -28,7 +28,6 @@
 </div>
 
 
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-9">
@@ -40,15 +39,20 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12  text-lg-start">
-      <button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">Add new Facility</button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">Add new Facility
+      </button>
     </div>
   </div>
 </div>
 
-<nav class="navbar">
-  <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
-         placeholder="enter your name">
-</nav>
+<div class="container-fluid">
+  <div class="col-3">
+    <nav class="navbar">
+      <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
+             placeholder="enter your search name">
+    </nav>
+  </div>
+</div>
 
 <div class="container-fluid">
   <div class="row">
@@ -57,19 +61,21 @@
       <div class="col-lg-12">
         <img src="{{facility.image}}" width="100%" height="200px" alt="">
         <span class="badge bg-secondary badge bg-warning text-dark">New</span>&nbsp;
-        <span (click)="sort('name')" class="text-decoration-none text  fs-6">{{facility.name}} &nbsp;<i class="fa fa-sort"></i></span>
+        <span (click)="sort('name')" class="text-decoration-none text  fs-6">{{facility.name}} &nbsp;<i
+          class="fa fa-sort"></i></span>
         <h3><a href="#" class="text-decoration-none text-primary  fs-6">Best Service ></a></h3>
       </div>
       <div>
-<!--        <button [routerLink]="['/facility/delete',facility.id]" data-toggle="modal" data-target="#deleteModal"-->
-<!--           class="btn btn-danger"  onclick="return confirm('Do you want to delete?')">Delete</button>-->
-        <button  data-toggle="modal" data-target="#deleteModal" class="btn btn-danger"
-                 (click)="delete(facility.id)">
+        <!--        <button [routerLink]="['/facility/delete',facility.id]" data-toggle="modal" data-target="#deleteModal"-->
+        <!--           class="btn btn-danger"  onclick="return confirm('Do you want to delete?')">Delete</button>-->
+        <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger"
+                (click)="delete(facility.id)">
           Delete
         </button>
         &nbsp;
         <button [routerLink]="['/facility/edit',facility.id]" data-toggle="modal" data-target="#editModal"
-           class="btn btn-primary">Edit</button>
+                class="btn btn-primary">Edit
+        </button>
       </div>
 
     </div>
@@ -81,7 +87,8 @@
 
 
 <!--Create Modal -->
-<div  class="modal fade" id="create"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-warning">
@@ -94,7 +101,6 @@
     </div>
   </div>
 </div>
-
 
 
 <div class="container-fluid">

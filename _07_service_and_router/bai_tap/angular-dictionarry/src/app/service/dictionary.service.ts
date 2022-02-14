@@ -21,7 +21,7 @@ export class DictionaryService {
       word: 'computer',
       mean: 'máy tính'
     }
-    ]
+    ];
   constructor() { }
 
   dictionary: IWord;

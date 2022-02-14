@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
-import {MustMatch} from './must-match.validator.js';
+import {MustMatch, MustMatch2} from './must-match.validator.js';
 
 @Component({
   selector: 'app-login-form',
@@ -9,20 +9,6 @@ import {MustMatch} from './must-match.validator.js';
 })
 export class LoginFormComponent implements OnInit {
 
-  // contactForm = new FormGroup({
-  //   email: new FormControl('',[Validators.email]),
-  //   passWord: new FormControl('',[Validators.minLength(6)]),
-  // });
-  //
-  // constructor() { }
-  //
-  // ngOnInit(): void {
-  // }
-  //
-  // onSubmit() {
-  //   console.log(this.contactForm.value);
-  // }
-  //
 
   registerForm: FormGroup;
   submitted = false;

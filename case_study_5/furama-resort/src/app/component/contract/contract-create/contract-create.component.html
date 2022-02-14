@@ -2,30 +2,41 @@
 
 <div id="form" class="mb-3 row" style="padding-left: 50px">
   <form novalidate="novalidate" [formGroup]="contractForm" (ngSubmit)="create()">
-    <div class="mb-3 row">
+
+<!--    <div class="mb-3 row">-->
+<!--      <label class="col-md-2 col-form-label">checkIn</label>-->
+<!--      <div class="col-sm-10 padding">-->
+<!--        <input type="date" formControlName="checkIn"/>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+
+
+<!--    <div class="mb-3 row">-->
+<!--      <label class="col-md-2 col-form-label">checkOut</label>-->
+<!--      <div class="col-sm-10 padding">-->
+<!--        <input type="date" formControlName="checkOut"/>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="mb-3 row" formGroupName="checkInOut">
       <label class="col-md-2 col-form-label">checkIn</label>
       <div class="col-sm-10 padding">
-        <input type="date" formControlName="checkIn"/>
+        <input class="width-select" type="date" formControlName="checkIn"/>
       </div>
 
-    </div>
-    <!--    <div-->
-    <!--      *ngIf="!name.valid && (name.dirty||name.touched)"  style="color: red">-->
-    <!--      name is not valid-->
-    <!--    </div>-->
-
-
-    <div class="mb-3 row">
       <label class="col-md-2 col-form-label">checkOut</label>
       <div class="col-sm-10 padding">
-        <input type="date" formControlName="checkOut"/>
+        <input class="width-select" type="date" formControlName="checkOut"/>
       </div>
+
     </div>
 
-    <!--    <div-->
-    <!--      *ngIf="!codeNumber.valid && (codeNumber.dirty||codeNumber.touched)"  style="color: red">-->
-    <!--      codeNumber is not valid ex: KH-0000-->
-    <!--    </div>-->
+    <div *ngIf="contractForm.controls.checkInOut.hasError('checkConfirm')" style="color: red">
+       invalid check in check out date
+    </div>
+
 
     <div class="mb-3 row">
       <label class="col-md-2 col-form-label">deposit</label>
@@ -69,243 +80,6 @@
         </select>
       </div>
     </div>
-
-
-    <!--    <div class="mb-3 row">-->
-    <!--      <div class="col-lg-4">-->
-    <!--        <label class="col-md-2 col-form-label">customer</label>-->
-    <!--        <select formControlName="id" name="" id="">-->
-    <!--          <option *ngFor="let idCustomer of idCustomers" [ngValue]="idCustomer">{{idCustomer}}</option>-->
-    <!--        </select>-->
-    <!--      </div>-->
-    <!--    </div>-->
-
-    <!--    <div class="mb-3 row">-->
-    <!--      <div class="col-lg-4">-->
-    <!--        <label class="col-md-2 col-form-label">customer</label>-->
-    <!--        <select formControlName="id" name="">-->
-    <!--          <option *ngFor="let idFacility of idFacilities" [ngValue]="idFacility">{{idFacility}}</option>-->
-    <!--        </select>-->
-    <!--      </div>-->
-
-
-<!--    <div class="mb-3 row" formGroupName="customer">-->
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label ">customer id</label>-->
-<!--          <select formControlName="id" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let idCustomer of idCustomers" [ngValue]="idCustomer">{{idCustomer}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer name</label>-->
-<!--          <select formControlName="name" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let name of nameCustomers" [ngValue]="name">{{name}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer code</label>-->
-<!--          <select formControlName="codeNumber" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let code of codeNumberCustomers" [ngValue]="code">{{code}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer birthDay</label>-->
-<!--          <select formControlName="birthDay" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let birthDay of birthDayCustomers" [ngValue]="birthDay">{{birthDay}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer idCard</label>-->
-<!--          <select formControlName="idCard" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let idCard of idCardCustomers" [ngValue]="idCard">{{idCard}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer gender</label>-->
-<!--          <select formControlName="gender" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let gender of genderCustomers" [ngValue]="gender">{{gender}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer phone</label>-->
-<!--          <select formControlName="phone" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let phone of phoneCustomers" [ngValue]="phone">{{phone}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer email</label>-->
-<!--          <select formControlName="email" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let email of emailCustomers" [ngValue]="email">{{email}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">customer address</label>-->
-<!--          <select formControlName="address" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let address of addressCustomers" [ngValue]="address">{{address}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label"> customerType</label>-->
-<!--          <select formControlName="customerType" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let customerType of customerTypeCustomers" [ngValue]="customerType">{{customerType}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-
-<!--    <div class="mb-3 row" formGroupName="facility">-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label" >facility id</label>-->
-<!--          <select formControlName="id" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let id of idFacilities" [ngValue]="id">{{id}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility name</label>-->
-<!--          <select formControlName="name" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let name of nameFacilities" [ngValue]="name">{{name}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility code</label>-->
-<!--          <select formControlName="codeService" name="" class="ps-5 width-select" >-->
-<!--            <option *ngFor="let code of codeServiceFacilities" [ngValue]="code">{{code}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility area</label>-->
-<!--          <select formControlName="area" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let area of areaFacilities" [ngValue]="area">{{area}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility cost</label>-->
-<!--          <select formControlName="cost" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let cost of costFacilities" [ngValue]="cost">{{cost}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility numberOfPerson</label>-->
-<!--          <select formControlName="numberOfPerson" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let numberOfPerson of numberOfPersonFacilities" [ngValue]="numberOfPerson">{{numberOfPerson}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility standardRoom</label>-->
-<!--          <select formControlName="standardRoom" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let standardRoom of standardRoomFacilities" [ngValue]="standardRoom">{{standardRoom}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility description</label>-->
-<!--          <select formControlName="description" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let description of descriptionFacilities" [ngValue]="description">{{description}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility poolArea</label>-->
-<!--          <select formControlName="poolArea" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let poolArea of poolAreaFacilities" [ngValue]="poolArea">{{poolArea}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility numberOfFloor</label>-->
-<!--          <select formControlName="numberOfFloor" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let numberOfFloor of numberOfFloorFacilities" [ngValue]="numberOfFloor">{{numberOfFloor}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility rentalType</label>-->
-<!--          <select formControlName="rentalType" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let rentalType of rentalTypeFacilities" [ngValue]="rentalType">{{rentalType}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility serviceType</label>-->
-<!--          <select formControlName="rentalType" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let serviceType of serviceTypeFacilities" [ngValue]="serviceType">{{serviceType}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="mb-3 row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <label class="col-md-2 col-form-label">facility image</label>-->
-<!--          <select formControlName="image" name="" class="ps-5 width-select">-->
-<!--            <option *ngFor="let image of imageFacilities" [ngValue]="image">{{image}}</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-
-
-
-<!--    </div>-->
 
     <input type="submit" class="btn btn-info" value="Create"/>
   </form>
