@@ -11,65 +11,77 @@
   <div class="mb-3 col-6">
     <label for="email" class="form-label">Email address</label>
     <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
-    formControlName="email">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div
-    *ngIf="!email.valid && (email.dirty||email.touched)">
-    Email is not valid ex: jhon@gmail.com
+           formControlName="email">
   </div>
 
-<!--  <div class="mb-3 col-6">-->
-<!--    <label>Password</label>-->
-<!--    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }" />-->
-<!--    <div *ngIf="submitted && !registerForm.controls.password.errors" class="invalid-feedback">-->
-<!--      <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>-->
-<!--      <div *ngIf="registerForm.controls.password.errors.minlength">Password must be at least 6 characters</div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <div style="color: red"
+       *ngIf="registerForm.get('email').errors?.required && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+    Email required
+  </div>
 
 
+  <!--  <div class="mb-3 col-6">-->
+  <!--    <label>Password</label>-->
+  <!--    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }" />-->
+  <!--    <div *ngIf="submitted && !registerForm.controls.password.errors" class="invalid-feedback">-->
+  <!--      <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>-->
+  <!--      <div *ngIf="registerForm.controls.password.errors.minlength">Password must be at least 6 characters</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
-<!--  <div class="mb-3 col-6">-->
-<!--    <label>Confirm Password</label>-->
-<!--    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors }" />-->
-<!--    <div *ngIf="submitted && !registerForm.controls.confirmPassword.errors" class="invalid-feedback">-->
-<!--      <div *ngIf="registerForm.controls.confirmPassword.errors.required">Password is required</div>-->
-<!--      <div *ngIf="registerForm.controls.confirmPassword.errors.minlength">Password must be at least 6 characters</div>-->
-<!--      <div *ngIf="registerForm.controls.confirmPassword.errors.mustMatch">Passwords must match</div>-->
-<!--    </div>-->
-<!--  </div>-->
+
+  <!--  <div class="mb-3 col-6">-->
+  <!--    <label>Confirm Password</label>-->
+  <!--    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors }" />-->
+  <!--    <div *ngIf="submitted && !registerForm.controls.confirmPassword.errors" class="invalid-feedback">-->
+  <!--      <div *ngIf="registerForm.controls.confirmPassword.errors.required">Password is required</div>-->
+  <!--      <div *ngIf="registerForm.controls.confirmPassword.errors.minlength">Password must be at least 6 characters</div>-->
+  <!--      <div *ngIf="registerForm.controls.confirmPassword.errors.mustMatch">Passwords must match</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
 
   <div class="mb-3 col-6" formGroupName="pwGroup">
     <label for="email" class="form-label">Pass Word</label>
+
     <input name="email" type="email" class="form-control" aria-describedby="emailHelp"
            formControlName="password">
+
+
+    <div style="color: red"
+         *ngIf="registerForm.get('pwGroup.password').errors?.required && (registerForm.get('pwGroup.password').dirty || registerForm.get('pwGroup.password').touched)">
+      Pass required
+    </div>
+
     <label for="email" class="form-label">Confirm Pass Word</label>
+
     <input name="email" type="email" class="form-control" aria-describedby="emailHelp"
            formControlName="confirmPassword">
-    <p style="color: red"
-       *ngIf="registerForm.controls.pwGroup.hasError('checkConfirm')
-      && (registerForm.controls.pwGroup.dirty || registerForm.controls.pwGroup.touched)">
-      pass not match
-    </p>
+    <!--      <p style="color: red"-->
+    <!--         *ngIf="registerForm.controls.pwGroup.hasError('checkConfirm')-->
+    <!--      && (registerForm.controls.pwGroup.dirty || registerForm.controls.pwGroup.touched)">-->
+    <!--        pass not match-->
+    <!--      </p>-->
 
-    <p style="color: red"
-       *ngIf="registerForm.get('pwGroup.confirmPassword').errors?.touched &&
-     registerForm.get('pwGroup.confirmPassword').errors?.required">
-      pass not requied
-    </p>
+
+
+    <div style="color: red"
+         *ngIf="registerForm.get('pwGroup.confirmPassword').errors?.required && (registerForm.get('pwGroup.confirmPassword').dirty || registerForm.get('pwGroup.confirmPassword').touched)">
+     Confirm Pass required
+    </div>
+
+    <div style="color: red"
+         *ngIf="registerForm.get('pwGroup').errors?.checkConfirm && (registerForm.get('pwGroup').dirty || registerForm.get('pwGroup').touched)">
+      Confirm Pass not match
+    </div>
 
   </div>
 
 
-
-
-
   <div class="mb-3 col-6">
-  <label for="country" class="form-label">Country</label>
+    <label for="country" class="form-label">Country</label>
     <select name="country" id="country" formControlName="country">
-<!--      <option  *ngFor="let c of countryList" [ngValue]="c">{{c.name}}</option>-->
+      <!--      <option  *ngFor="let c of countryList" [ngValue]="c">{{c.name}}</option>-->
       <option selected [value]="null" disabled>
         select country
       </option>
@@ -77,29 +89,39 @@
     </select>
 
 
-<!--    <select name="country" id="country" formControlName="country" >-->
-<!--      <option value="VN" selected>VN</option>-->
-<!--      <option value="USA">USA</option>-->
-<!--      <option value="ENG">ENG</option>-->
-<!--    </select>-->
-</div>
+    <!--    <select name="country" id="country" formControlName="country" >-->
+    <!--      <option value="VN" selected>VN</option>-->
+    <!--      <option value="USA">USA</option>-->
+    <!--      <option value="ENG">ENG</option>-->
+    <!--    </select>-->
+  </div>
 
   <div class="mb-3 col-6">
     <label for="age" class="form-label">Age</label>
     <input
       name="age" type="text" class="form-control" id="age"
-     formControlName="age">
+      formControlName="age">
   </div>
 
-  <div
-    *ngIf="!age.valid && (age.dirty||age.touched)">
-    age  is not valid age from(18-100)
+  <div style="color: red"
+       *ngIf="registerForm.get('age').errors?.required && (registerForm.get('age').dirty || registerForm.get('age').touched)">
+    Age required
+  </div>
+
+  <div style="color: red"
+       *ngIf="registerForm.get('age').errors?.min && (registerForm.get('age').dirty || registerForm.get('age').touched)">
+    Age >18
+  </div>
+
+  <div style="color: red"
+       *ngIf="registerForm.get('age').errors?.max && (registerForm.get('age').dirty || registerForm.get('age').touched)">
+    Age <100
   </div>
 
   <div class="mb-3 col-6">
-    <label for="gender" class="form-label" >Gender</label>
-    <input type="radio"  id="gender" value="Male" formControlName="gender" style="margin: 5px"><span>Male</span>
-    <input type="radio"  value="Female" formControlName="gender" style="margin: 5px"><span>FeMale</span>
+    <label for="gender" class="form-label">Gender</label>
+    <input type="radio" id="gender" value="Male" formControlName="gender" style="margin: 5px"><span>Male</span>
+    <input type="radio" value="Female" formControlName="gender" style="margin: 5px"><span>FeMale</span>
   </div>
 
   <div
@@ -115,14 +137,16 @@
   </div>
 
 
-  <div
-    *ngIf="!phone.valid && (phone.dirty||phone.touched)">
-    phone is not valid
+  <div style="color: red"
+       *ngIf="registerForm.get('phone').errors?.required && (registerForm.get('phone').dirty || registerForm.get('phone').touched)">
+    Phone required
   </div>
 
-<!--  <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit-->
+  <div style="color: red"
+       *ngIf="registerForm.get('phone').errors?.pattern && (registerForm.get('phone').dirty || registerForm.get('phone').touched)">
+    Phone not match
+  </div>
 
-<!--  </button>-->
 
   <button class="btn btn-primary" [disabled]="!registerForm.valid">Submit
 
