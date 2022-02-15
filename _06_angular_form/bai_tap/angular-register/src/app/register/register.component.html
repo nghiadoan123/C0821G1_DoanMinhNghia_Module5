@@ -47,10 +47,14 @@
     <input name="email" type="email" class="form-control" aria-describedby="emailHelp"
            formControlName="password">
 
-
     <div style="color: red"
          *ngIf="registerForm.get('pwGroup.password').errors?.required && (registerForm.get('pwGroup.password').dirty || registerForm.get('pwGroup.password').touched)">
-      Pass required
+       Pass required
+    </div>
+
+    <div style="color: red"
+         *ngIf="registerForm.get('pwGroup.password').errors?.minlength && (registerForm.get('pwGroup.password').dirty)">
+       Pass minlength
     </div>
 
     <label for="email" class="form-label">Confirm Pass Word</label>
@@ -69,6 +73,12 @@
          *ngIf="registerForm.get('pwGroup.confirmPassword').errors?.required && (registerForm.get('pwGroup.confirmPassword').dirty || registerForm.get('pwGroup.confirmPassword').touched)">
      Confirm Pass required
     </div>
+
+    <div style="color: red"
+         *ngIf="registerForm.get('pwGroup.confirmPassword').errors?.minlength && (registerForm.get('pwGroup.confirmPassword').dirty)">
+      Confirm Pass minlength
+    </div>
+
 
     <div style="color: red"
          *ngIf="registerForm.get('pwGroup').errors?.checkConfirm && (registerForm.get('pwGroup').dirty || registerForm.get('pwGroup').touched)">

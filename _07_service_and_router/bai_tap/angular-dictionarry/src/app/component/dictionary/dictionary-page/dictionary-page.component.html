@@ -12,6 +12,6 @@
     <td>{{i + 1}}</td>
     <td>{{dic.word}}</td>
     <td>{{dic.mean}}</td>
-    <td><button><a style="text-decoration: none" [routerLink]="['/dictionary/detail', dic.word]">detail</a></button></td>
+    <td><button><a style="text-decoration: none" routerLink="/dictionary/detail/{{dic.word}}">detail</a></button></td>
   </tr>
 </table>

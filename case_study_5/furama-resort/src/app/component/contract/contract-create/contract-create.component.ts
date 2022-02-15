@@ -22,12 +22,12 @@ function checkDay(abstractControl: AbstractControl) {
 export class ContractCreateComponent implements OnInit {
   contractForm = new FormGroup({
     // id: new FormControl(),
-    checkInOut: new FormGroup({
-      checkIn: new FormControl('', [Validators.required]),
-      checkOut: new FormControl('', [Validators.required])
-    }, checkDay),
-    // checkIn: new FormControl('', [Validators.required]),
-    // checkOut: new FormControl('', [Validators.required, Validators.email]),
+    // checkInOut: new FormGroup({
+    //   checkIn: new FormControl('', [Validators.required]),
+    //   checkOut: new FormControl('', [Validators.required])
+    // }, checkDay),
+    checkIn: new FormControl('', [Validators.required]),
+    checkOut: new FormControl('', [Validators.required, Validators.email]),
     deposit: new FormControl('', [Validators.required]),
     totalMoney: new FormControl('', [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
     customer: new FormControl('', [Validators.required]),

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IWord} from '../../../model/i-word';
 import {DictionaryService} from '../../../service/dictionary.service';
-import {ActivatedRoute, convertToParamMap, ParamMap} from '@angular/router';
+import {ActivatedRoute, convertToParamMap, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-dictionary-detail',
@@ -12,16 +12,19 @@ export class DictionaryDetailComponent implements OnInit {
 
   dictionary: IWord;
   word: string;
+
   constructor(private activatedRoute: ActivatedRoute,
-              private dictionaryService: DictionaryService) {
-    this.activatedRoute.paramMap.subscribe((pamaMap: ParamMap) =>{
+              private dictionaryService: DictionaryService,
+              private router: Router) {
+    this.activatedRoute.paramMap.subscribe((pamaMap: ParamMap) => {
       this.word = pamaMap.get('word');
       // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dictionaryService.getAll().length; i++){
-        if (this.dictionaryService.getAll()[i].word === this.word){
+      for (let i = 0; i < this.dictionaryService.getAll().length; i++) {
+        if (this.dictionaryService.getAll()[i].word === this.word) {
           this.dictionary = this.dictionaryService.getAll()[i];
         }
       }
+      // this.router.navigate(['/dictionary/list']);
     });
   }
 

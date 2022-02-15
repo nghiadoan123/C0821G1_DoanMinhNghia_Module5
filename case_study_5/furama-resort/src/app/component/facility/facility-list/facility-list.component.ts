@@ -19,6 +19,7 @@ export class FacilityListComponent implements OnInit {
   public key = '';
   public reverse = false;
   page = 1;
+  id1: number;
 
   ngOnInit(): void {
     this.getAll();
@@ -31,10 +32,13 @@ export class FacilityListComponent implements OnInit {
     });
   }
 
+  getId(id: number){
+    this.id1 = id;
+  }
   delete(id: number) {
     this.facilityService.delete(id).subscribe(facility => {
       console.log(facility);
-      alert('delete success');
+      // alert('delete success');
       this.router.navigate(['/facility/list']);
       this.facilityService.getAll();
     }), error('error');

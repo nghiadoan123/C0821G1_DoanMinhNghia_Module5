@@ -10,6 +10,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class CustomerDeleteComponent implements OnInit {
   id: number;
+
   customerForm: FormGroup;
 
   constructor(private customerService: CustomerService,
@@ -29,10 +30,12 @@ export class CustomerDeleteComponent implements OnInit {
     id = this.id;
     this.customerService.delete(id).subscribe(customer =>{
       console.log(customer);
-      alert('delete success');
+      // alert('delete success');
       this.router.navigate(['/customer/list']);
     });
   }
+
+
 
   private getCustomer(id: number) {
     this.customerService.findById(id).subscribe(getCustomer => {

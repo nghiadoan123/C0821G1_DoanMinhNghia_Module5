@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {FacilityService} from '../../../service/facility/facility.service';
@@ -15,8 +15,8 @@ export class FacilityDeleteComponent implements OnInit {
   constructor(private facilityService: FacilityService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
-    activatedRoute.paramMap.subscribe((praMap: ParamMap) =>{
-      this.id = + praMap.get('id');
+    activatedRoute.paramMap.subscribe((praMap: ParamMap) => {
+      this.id = +praMap.get('id');
       this.getFacility(this.id);
     });
   }
@@ -27,7 +27,7 @@ export class FacilityDeleteComponent implements OnInit {
 
   delete(id: number) {
     id = this.id;
-    this.facilityService.delete(id).subscribe(facility =>{
+    this.facilityService.delete(id).subscribe(facility => {
       console.log(facility);
       alert('delete success');
       this.router.navigate(['/facility/list']);

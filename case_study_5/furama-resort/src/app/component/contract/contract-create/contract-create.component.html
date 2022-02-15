@@ -3,39 +3,39 @@
 <div id="form" class="mb-3 row" style="padding-left: 50px">
   <form novalidate="novalidate" [formGroup]="contractForm" (ngSubmit)="create()">
 
-<!--    <div class="mb-3 row">-->
-<!--      <label class="col-md-2 col-form-label">checkIn</label>-->
-<!--      <div class="col-sm-10 padding">-->
-<!--        <input type="date" formControlName="checkIn"/>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-
-
-<!--    <div class="mb-3 row">-->
-<!--      <label class="col-md-2 col-form-label">checkOut</label>-->
-<!--      <div class="col-sm-10 padding">-->
-<!--        <input type="date" formControlName="checkOut"/>-->
-<!--      </div>-->
-<!--    </div>-->
-
-    <div class="mb-3 row" formGroupName="checkInOut">
+    <div class="mb-3 row">
       <label class="col-md-2 col-form-label">checkIn</label>
       <div class="col-sm-10 padding">
-        <input class="width-select" type="date" formControlName="checkIn"/>
+        <input type="date" formControlName="checkIn"/>
       </div>
 
+    </div>
+
+
+
+    <div class="mb-3 row">
       <label class="col-md-2 col-form-label">checkOut</label>
       <div class="col-sm-10 padding">
-        <input class="width-select" type="date" formControlName="checkOut"/>
+        <input type="date" formControlName="checkOut"/>
       </div>
-
     </div>
 
-    <div *ngIf="contractForm.controls.checkInOut.hasError('checkConfirm')" style="color: red">
-       invalid check in check out date
-    </div>
+<!--    <div class="mb-3 row" formGroupName="checkInOut">-->
+<!--      <label class="col-md-2 col-form-label">checkIn</label>-->
+<!--      <div class="col-sm-10 padding">-->
+<!--        <input class="width-select" type="date" formControlName="checkIn"/>-->
+<!--      </div>-->
+
+<!--      <label class="col-md-2 col-form-label">checkOut</label>-->
+<!--      <div class="col-sm-10 padding">-->
+<!--        <input class="width-select" type="date" formControlName="checkOut"/>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    <div *ngIf="contractForm.controls.checkInOut.hasError('checkConfirm')" style="color: red">-->
+<!--       invalid check in check out date-->
+<!--    </div>-->
 
 
     <div class="mb-3 row">
