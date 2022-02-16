@@ -1,7 +1,7 @@
 <p>customer-delete works!</p>
 
 <div id="form" class="mb-3 row" style="padding-left: 50px">
-  <form novalidate="novalidate" [formGroup]="customerForm" (ngSubmit)="delete(id)">
+  <form novalidate="novalidate" [formGroup]="customerForm">
 
     <div class="mb-3 row">
       <label  class="col-sm-2 col-form-label">Id</label>
@@ -76,6 +76,12 @@
         <input type="text"  formControlName="customerType"/>
       </div>
     </div>
-    <input type="submit" value="Remove"/>
+    <mat-dialog-actions align="end">
+      <button class="btn btn-danger">Cancel</button>
+      &nbsp;
+      <button class="btn btn-info" [mat-dialog-close]="true" (click)="delete(customerForm.controls.id.value)">Delete</button>
+    </mat-dialog-actions>
   </form>
+
 </div>
+

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-name-card"
+    }
+  },
+  "defaultProject": "angular-name-card",
+  "cli": {
+    "analytics": false
+  }
 }

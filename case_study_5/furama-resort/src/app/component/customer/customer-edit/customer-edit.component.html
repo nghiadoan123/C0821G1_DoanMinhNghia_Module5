@@ -127,12 +127,16 @@
       customer Type is not valid
     </div>
 
-    <div class="row">
-      <div class="">
-        <input type="submit" class="btn btn-warning col-2 container-fluid" value="Edit"/>
-      </div>
-    </div>
+<!--    <div class="row">-->
+<!--      <div class="">-->
+<!--        <input type="submit" class="btn btn-warning col-2 container-fluid" value="Edit"/>-->
+<!--      </div>-->
+<!--    </div>-->
 
-
+    <mat-dialog-actions >
+      <button class="btn btn-danger">Cancel</button>
+      &nbsp;
+      <button class="btn btn-info" [mat-dialog-close]="true" (click)="update(customerForm.controls.id.value)">Edit</button>
+    </mat-dialog-actions>
   </form>
 </div>

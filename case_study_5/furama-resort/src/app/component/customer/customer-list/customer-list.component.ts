@@ -3,6 +3,10 @@ import {CustomerService} from '../../../service/customer/customer.service';
 import {Customer} from '../../../model/customer';
 import {Router} from '@angular/router';
 import {error} from '@angular/compiler/src/util';
+import {MatDialog} from '@angular/material/dialog';
+import {CustomerDeleteComponent} from '../customer-delete/customer-delete.component';
+import {CustomerEditComponent} from '../customer-edit/customer-edit.component';
+import {CustomerCreateComponent} from '../customer-create/customer-create.component';
 
 
 @Component({
@@ -13,7 +17,8 @@ import {error} from '@angular/compiler/src/util';
 export class CustomerListComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
-              private router: Router) {
+              private router: Router,
+              public dialog: MatDialog) {
   }
 
   customers: Customer[] = [];
@@ -21,11 +26,10 @@ export class CustomerListComponent implements OnInit {
   name: any;
 
   id: number;
-  id1: number;
+  // id1: number;
   public key = '';
   public reverse = false;
   page = 1;
-  converse: true;
 
   ngOnInit(): void {
     this.getAll();
@@ -40,18 +44,18 @@ export class CustomerListComponent implements OnInit {
     });
   }
 
-  getId(id: number) {
-    this.id1 = id;
-  }
+  // getId(id: number) {
+  //   this.id1 = id;
+  // }
 
-  delete(id: number) {
-    this.customerService.delete(id).subscribe(customer => {
-      console.log(customer);
-      // alert('delete success');
-      this.router.navigate(['/customer/list']);
-      this.customerService.getAll();
-    }), error('error');
-  }
+  // delete(id: number) {
+  //   this.customerService.delete(id).subscribe(customer => {
+  //     console.log(customer);
+  //     // alert('delete success');
+  //     this.router.navigate(['/customer/list']);
+  //     this.customerService.getAll();
+  //   }), error('error');
+  // }
   Search() {
     if (this.name === '') {
       this.ngOnInit();
@@ -65,5 +69,35 @@ export class CustomerListComponent implements OnInit {
   sort(key) {
     this.key = key;
     this.reverse = !this.reverse;
+  }
+
+  openDialog(customer: any) {
+    const dialogRef = this.dialog.open(CustomerDeleteComponent, {data: customer});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'delete') {
+        this.customerService.getAll();
+      }
+    });
+  }
+
+  openDialogEdit(customer: any) {
+    const dialogRef = this.dialog.open(CustomerEditComponent, {data: customer});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'edit') {
+        this.customerService.getAll();
+      }
+    });
+  }
+
+  openDialogCreate() {
+    const dialogRef = this.dialog.open(CustomerCreateComponent);
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result === 'create') {
+    //     this.customerService.getAll();
+    //   }
+    // });
   }
 }

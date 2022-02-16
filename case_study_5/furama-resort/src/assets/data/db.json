@@ -25,28 +25,52 @@
       "id": 7
     },
     {
-      "id": 8,
-      "name": "Nguyễn Văn Thoại",
-      "email": "Thoai@gmail.com",
+      "name": "Nguyen Van A",
+      "email": "a@gmail.com",
       "address": "DN",
-      "phone": "+84905882154",
-      "idCard": "120235445555",
+      "phone": "+84958789587",
+      "idCard": "123456789548",
       "gender": "Man",
-      "birthDay": "1990-10-20",
-      "codeNumber": "KH-0003",
-      "customerType": "Diamond"
+      "birthDay": "1992-10-18",
+      "codeNumber": "KH-1245",
+      "customerType": "Diamond",
+      "id": 8
     },
     {
-      "id": 9,
-      "name": "Nguyễn Văn Thoại",
-      "email": "Thoai@gmail.com",
+      "name": "Nguyen Van B",
+      "email": "b@gmail.com",
+      "address": "HN",
+      "phone": "+84902548484",
+      "idCard": "120345698788",
+      "gender": "Man",
+      "birthDay": "1992-10-20",
+      "codeNumber": "KH-1234",
+      "customerType": "Silver",
+      "id": 9
+    },
+    {
+      "name": "Nguyen Thi D",
+      "email": "d@gmail.com",
       "address": "DN",
-      "phone": "+84905882154",
-      "idCard": "120235445555",
-      "gender": "Woman",
-      "birthDay": "1990-10-20",
-      "codeNumber": "KH-0004",
-      "customerType": "Diamond"
+      "phone": "+84925888999",
+      "idCard": "123456851255",
+      "gender": "Man",
+      "birthDay": "1992-10-10",
+      "codeNumber": "KH-1254",
+      "customerType": "Platinium",
+      "id": 10
+    },
+    {
+      "name": "Nguyen Thi K",
+      "email": "K@gmail.com",
+      "address": "Hue",
+      "phone": "+84912584698",
+      "idCard": "120256958777",
+      "gender": "Man",
+      "birthDay": "1992-10-20",
+      "codeNumber": "KH-1245",
+      "customerType": "Platinium",
+      "id": 11
     }
   ],
   "facilities": [

@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Customer} from '../../../model/customer';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-customer-edit',
@@ -14,36 +15,62 @@ export class CustomerEditComponent implements OnInit {
   id: number;
   customerForm: FormGroup;
 
-  constructor(private customerService: CustomerService,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private dialogRef: MatDialogRef<CustomerEditComponent>,
+              private customerService: CustomerService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
-    activatedRoute.paramMap.subscribe((praMap: ParamMap) => {
-      this.id = +praMap.get('id');
-      this.getCustomer(this.id);
-    });
+    // activatedRoute.paramMap.subscribe((praMap: ParamMap) => {
+    //   this.id = +praMap.get('id');
+    //   this.getCustomer(this.id);
+    // });
   }
 
   ngOnInit(): void {
+    this.customerForm = new FormGroup({
+            id: new FormControl('', [Validators.required]),
+            name: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            address: new FormControl('', [Validators.required]),
+            phone: new FormControl('', [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
+            idCard: new FormControl('', [Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]),
+            gender: new FormControl('', [Validators.required]),
+            birthDay: new FormControl('', [Validators.required]),
+            codeNumber: new FormControl('', [Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
+            customerType: new FormControl('', [Validators.required])
+          });
+    if (this.data){
+      this.customerForm.controls.id.setValue(this.data.id);
+      this.customerForm.controls.name.setValue(this.data.name);
+      this.customerForm.controls.email.setValue(this.data.email);
+      this.customerForm.controls.address.setValue(this.data.address);
+      this.customerForm.controls.phone.setValue(this.data.phone);
+      this.customerForm.controls.idCard.setValue(this.data.idCard);
+      this.customerForm.controls.gender.setValue(this.data.gender);
+      this.customerForm.controls.birthDay.setValue(this.data.birthDay);
+      this.customerForm.controls.codeNumber.setValue(this.data.codeNumber);
+      this.customerForm.controls.customerType.setValue(this.data.customerType);
+    }
   }
 
 
-  private getCustomer(id: number) {
-    this.customerService.findById(id).subscribe(customer => {
-      console.log(customer);
-      this.customerForm = new FormGroup({
-        id: new FormControl(customer.id, [Validators.required]),
-        name: new FormControl(customer.name, [Validators.required]),
-        email: new FormControl(customer.email, [Validators.required, Validators.email]),
-        address: new FormControl(customer.address, [Validators.required]),
-        phone: new FormControl(customer.phone, [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
-        idCard: new FormControl(customer.idCard, [Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]),
-        gender: new FormControl(customer.gender, [Validators.required]),
-        birthDay: new FormControl(customer.birthDay, [Validators.required]),
-        codeNumber: new FormControl(customer.codeNumber, [Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
-        customerType: new FormControl(customer.customerType, [Validators.required])
-      });
-    });
-  }
+  // private getCustomer(id: number) {
+  //   this.customerService.findById(id).subscribe(customer => {
+  //     console.log(customer);
+  //     this.customerForm = new FormGroup({
+  //       id: new FormControl(customer.id, [Validators.required]),
+  //       name: new FormControl(customer.name, [Validators.required]),
+  //       email: new FormControl(customer.email, [Validators.required, Validators.email]),
+  //       address: new FormControl(customer.address, [Validators.required]),
+  //       phone: new FormControl(customer.phone, [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
+  //       idCard: new FormControl(customer.idCard, [Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]),
+  //       gender: new FormControl(customer.gender, [Validators.required]),
+  //       birthDay: new FormControl(customer.birthDay, [Validators.required]),
+  //       codeNumber: new FormControl(customer.codeNumber, [Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
+  //       customerType: new FormControl(customer.customerType, [Validators.required])
+  //     });
+  //   });
+  // }
 
 
   update(id: number) {
@@ -51,6 +78,7 @@ export class CustomerEditComponent implements OnInit {
     this.customerService.update(id, customer).subscribe(customerData => {
       alert('update success');
       this.router.navigate(['/customer/list']);
+      this.dialogRef.close('edit');
     });
   }
 

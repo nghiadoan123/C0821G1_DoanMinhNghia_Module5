@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {Router} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class CustomerCreateComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
               private router: Router,
+              // private dialogRef: MatDialogRef<CustomerCreateComponent>,
               private fb: FormBuilder) {
   }
 
@@ -37,8 +39,10 @@ export class CustomerCreateComponent implements OnInit {
     this.customerService.save(customer).subscribe(customerData => {
       console.log(customerData);
       this.router.navigate(['/customer/list']);
+      // this.dialogRef.close('create');
     });
   }
+
   get email() {
     return this.customerForm.get('email');
   }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-customer-delete',
@@ -13,45 +14,75 @@ export class CustomerDeleteComponent implements OnInit {
 
   customerForm: FormGroup;
 
-  constructor(private customerService: CustomerService,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private customerService: CustomerService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
-    activatedRoute.paramMap.subscribe((praMap: ParamMap) =>{
-      this.id = + praMap.get('id');
-      this.getCustomer(this.id);
-    });
+              private activatedRoute: ActivatedRoute,
+              private dialogRef: MatDialogRef<CustomerDeleteComponent>) {
+    // activatedRoute.paramMap.subscribe((praMap: ParamMap) => {
+    //   this.id = +praMap.get('id');
+    //   this.getCustomer(this.id);
+    // });
   }
 
   ngOnInit(): void {
+    this.customerForm = new FormGroup({
+            id: new FormControl(''),
+            name: new FormControl(''),
+            email: new FormControl(''),
+            address: new FormControl(''),
+            phone: new FormControl(''),
+            idCard: new FormControl(''),
+            gender: new FormControl(''),
+            birthDay: new FormControl(''),
+            codeNumber: new FormControl(''),
+            customerType: new FormControl('')
+          });
+    if (this.data){
+      this.customerForm.controls.id.setValue(this.data.id);
+      this.customerForm.controls.name.setValue(this.data.name);
+      this.customerForm.controls.email.setValue(this.data.email);
+      this.customerForm.controls.address.setValue(this.data.address);
+      this.customerForm.controls.phone.setValue(this.data.phone);
+      this.customerForm.controls.idCard.setValue(this.data.idCard);
+      this.customerForm.controls.gender.setValue(this.data.gender);
+      this.customerForm.controls.birthDay.setValue(this.data.birthDay);
+      this.customerForm.controls.codeNumber.setValue(this.data.codeNumber);
+      this.customerForm.controls.customerType.setValue(this.data.customerType);
+    }
   }
 
 
   delete(id: number) {
-    id = this.id;
-    this.customerService.delete(id).subscribe(customer =>{
+    // id = this.id;
+    this.customerService.delete(id).subscribe(customer => {
       console.log(customer);
       // alert('delete success');
       this.router.navigate(['/customer/list']);
+      this.dialogRef.close('delete'); // bien delete la bien nam ben trang list dong 77
+      alert('delete success');
     });
   }
 
 
-
-  private getCustomer(id: number) {
-    this.customerService.findById(id).subscribe(getCustomer => {
-      console.log(getCustomer);
-      this.customerForm = new FormGroup({
-        id: new FormControl(getCustomer.id),
-        name: new FormControl(getCustomer.name),
-        email: new FormControl(getCustomer.email),
-        address: new FormControl(getCustomer.address),
-        phone: new FormControl(getCustomer.phone),
-        idCard: new FormControl(getCustomer.idCard),
-        gender: new FormControl(getCustomer.gender),
-        birthDay: new FormControl(getCustomer.birthDay),
-        codeNumber: new FormControl(getCustomer.codeNumber),
-        customerType: new FormControl(getCustomer.customerType)
-      });
-    });
-  }
+  // private getCustomer(id: number) {
+  //   this.customerService.findById(id).subscribe(getCustomer => {
+  //     console.log(getCustomer);
+  //     this.customerForm = new FormGroup({
+  //       id: new FormControl(getCustomer.id),
+  //       name: new FormControl(getCustomer.name),
+  //       email: new FormControl(getCustomer.email),
+  //       address: new FormControl(getCustomer.address),
+  //       phone: new FormControl(getCustomer.phone),
+  //       idCard: new FormControl(getCustomer.idCard),
+  //       gender: new FormControl(getCustomer.gender),
+  //       birthDay: new FormControl(getCustomer.birthDay),
+  //       codeNumber: new FormControl(getCustomer.codeNumber),
+  //       customerType: new FormControl(getCustomer.customerType)
+  //     });
+  //   });
+  //   if (this.data){
+  //     this.customerForm.controls.id.setValue(this.data.id);
+  //   }
+  // }
 }

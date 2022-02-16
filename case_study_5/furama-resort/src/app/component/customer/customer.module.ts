@@ -11,6 +11,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ]
 })
 export class CustomerModule {
