@@ -11,12 +11,34 @@
 
     </div>
 
-
+    <div style="color: red"
+         *ngIf="contractForm.get('checkIn').errors?.required && (contractForm.get('checkIn').dirty ||contractForm.get('checkIn').touched)">
+      check in day cannot be blank!
+    </div>
+    <div style="color: red" *ngIf="contractForm.get('checkIn').hasError('futureDate') && (contractForm.get('checkIn').dirty||contractForm.get('checkIn').touched ) ">
+      check in day must be larger than current day!
+    </div>
 
     <div class="mb-3 row">
       <label class="col-md-2 col-form-label">checkOut</label>
       <div class="col-sm-10 padding">
         <input type="date" formControlName="checkOut"/>
+      </div>
+    </div>
+
+    <div style="color: red"
+         *ngIf="contractForm.get('checkOut').errors?.required && (contractForm.get('checkOut').dirty ||contractForm.get('checkOut').touched)">
+      check out day cannot be blank!
+    </div>
+
+    <div style="color: red" *ngIf="contractForm.get('checkOut').hasError('futureDate') && (contractForm.get('checkOut').dirty||contractForm.get('checkOut').touched ) ">
+      check out day must be larger than current day!
+    </div>
+
+
+    <div style="color: red" *ngIf="!contractForm.valid && (contractForm.dirty || contractForm.touched)">
+      <div *ngIf="contractForm.hasError('checkInOut')">
+        End Date must be greater than Start Date!
       </div>
     </div>
 
@@ -60,7 +82,7 @@
     <div class="mb-3 row">
       <label class="col-md-2 col-form-label">customer</label>
       <div class="col-sm-10 padding">
-        <select formControlName="customer" name="" id="">
+        <select formControlName="customer">
           <option selected [value]="null" disabled>
             select customer
           </option>

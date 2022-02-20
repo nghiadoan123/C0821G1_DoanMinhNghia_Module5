@@ -1,9 +1,27 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import * as moment from 'moment';
 
+
+function checkDate(birthDay: any) {
+  const today = new Date();
+  const birthDate = new Date(birthDay);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  console.log(age);
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  console.log(age);
+  if (age >= 18){
+    return true;
+  } else {
+    return false;
+  }
+}
 
 @Component({
   selector: 'app-customer-create',
@@ -16,10 +34,10 @@ export class CustomerCreateComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', [Validators.required]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
+    phone: new FormControl('', [Validators.required, Validators.pattern('^(09[01]\\d{7})|(((84)[(90)(91)])\\d{8}$)')]),
     idCard: new FormControl('', [Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]),
     gender: new FormControl('', [Validators.required]),
-    birthDay: new FormControl('', [Validators.required]),
+    birthDay: new FormControl('', [Validators.required, this.checkAge18]),
     codeNumber: new FormControl('', [Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
     customerType: new FormControl('', [Validators.required])
   });
@@ -27,7 +45,7 @@ export class CustomerCreateComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
               private router: Router,
-              // private dialogRef: MatDialogRef<CustomerCreateComponent>,
+              private dialogRef: MatDialogRef<CustomerCreateComponent>,
               private fb: FormBuilder) {
   }
 
@@ -39,8 +57,12 @@ export class CustomerCreateComponent implements OnInit {
     this.customerService.save(customer).subscribe(customerData => {
       console.log(customerData);
       this.router.navigate(['/customer/list']);
-      // this.dialogRef.close('create');
+      this.dialogRef.close('create');
     });
+  }
+
+  checkAge18(abstractControl: AbstractControl) {
+    return checkDate(abstractControl.value) ? null : {checkBirthDay: true};
   }
 
   get email() {

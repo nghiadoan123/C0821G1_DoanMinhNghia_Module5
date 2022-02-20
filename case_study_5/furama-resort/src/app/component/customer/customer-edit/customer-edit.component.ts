@@ -12,7 +12,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 })
 export class CustomerEditComponent implements OnInit {
 
-  id: number;
+  // id: number;
   customerForm: FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -32,7 +32,7 @@ export class CustomerEditComponent implements OnInit {
             name: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.required, Validators.email]),
             address: new FormControl('', [Validators.required]),
-            phone: new FormControl('', [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
+            phone: new FormControl('', [Validators.required, Validators.pattern('^(09[01]\\d{7})|(((84)[(90)(91)])\\d{8}$)')]),
             idCard: new FormControl('', [Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]),
             gender: new FormControl('', [Validators.required]),
             birthDay: new FormControl('', [Validators.required]),
@@ -77,8 +77,10 @@ export class CustomerEditComponent implements OnInit {
     const customer = this.customerForm.value;
     this.customerService.update(id, customer).subscribe(customerData => {
       alert('update success');
-      this.router.navigate(['/customer/list']);
       this.dialogRef.close('edit');
+    }, error => {
+    }, () => {
+      this.router.navigate(['/customer/list']);
     });
   }
 

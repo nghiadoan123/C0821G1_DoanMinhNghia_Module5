@@ -71,6 +71,42 @@
       "codeNumber": "KH-1245",
       "customerType": "Platinium",
       "id": 11
+    },
+    {
+      "name": "Nguyen Van A",
+      "email": "a@gmail.com",
+      "address": "DN",
+      "phone": "+84950265555",
+      "idCard": "102365489",
+      "gender": "Man",
+      "birthDay": "2022-02-16",
+      "codeNumber": "KH-1235",
+      "customerType": "Platinium",
+      "id": 12
+    },
+    {
+      "id": 13,
+      "name": "Truong Van B",
+      "email": "kkkk@gmail.com",
+      "address": "DN",
+      "phone": "+84895236666",
+      "idCard": "111111111",
+      "gender": "Woman",
+      "birthDay": "2022-02-09",
+      "codeNumber": "KH-1111",
+      "customerType": "Diamond"
+    },
+    {
+      "name": "dsfafdsa",
+      "email": "gdgdsg@gmail.com",
+      "address": "DN",
+      "phone": "+84905222222",
+      "idCard": "250255555",
+      "gender": "Man",
+      "birthDay": "2022-02-15",
+      "codeNumber": "KH-1201",
+      "customerType": "Diamond",
+      "id": 14
     }
   ],
   "facilities": [
@@ -225,21 +261,6 @@
       "id": 13
     },
     {
-      "name": "Villa B",
-      "codeService": "SV-0007",
-      "area": "150",
-      "cost": "25",
-      "numberOfPerson": "2",
-      "standardRoom": "VIP",
-      "description": "OK",
-      "poolArea": "2540",
-      "numberOfFloor": "2",
-      "rentalType": "Day",
-      "serviceType": "Villa",
-      "image": "http://localhost:4200/assets/images/villa_3.jpg",
-      "id": 14
-    },
-    {
       "id": 15,
       "name": "Room New Standard2",
       "codeService": "SV-0008",
@@ -252,7 +273,22 @@
       "numberOfFloor": "4",
       "rentalType": "Month",
       "serviceType": "Room",
-      "image": "http://localhost:4200/assets/images/room_3.jpg"
+      "image": "http://localhost:4200/assets/images/room.jpg"
+    },
+    {
+      "name": "FACILITY",
+      "codeService": "SV-0121",
+      "area": "120",
+      "cost": "1205",
+      "numberOfPerson": "2",
+      "standardRoom": "Normal",
+      "description": "OK",
+      "poolArea": "2500",
+      "numberOfFloor": "2",
+      "rentalType": "Month",
+      "serviceType": "Villa",
+      "image": "http://localhost:4200/assets/images/villa_2.jpg",
+      "id": 16
     }
   ],
   "contracts": [

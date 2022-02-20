@@ -27,18 +27,18 @@ export class CustomerDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerForm = new FormGroup({
-            id: new FormControl(''),
-            name: new FormControl(''),
-            email: new FormControl(''),
-            address: new FormControl(''),
-            phone: new FormControl(''),
-            idCard: new FormControl(''),
-            gender: new FormControl(''),
-            birthDay: new FormControl(''),
-            codeNumber: new FormControl(''),
-            customerType: new FormControl('')
-          });
-    if (this.data){
+      id: new FormControl(''),
+      name: new FormControl(''),
+      email: new FormControl(''),
+      address: new FormControl(''),
+      phone: new FormControl(''),
+      idCard: new FormControl(''),
+      gender: new FormControl(''),
+      birthDay: new FormControl(''),
+      codeNumber: new FormControl(''),
+      customerType: new FormControl('')
+    });
+    if (this.data) {
       this.customerForm.controls.id.setValue(this.data.id);
       this.customerForm.controls.name.setValue(this.data.name);
       this.customerForm.controls.email.setValue(this.data.email);
@@ -58,9 +58,11 @@ export class CustomerDeleteComponent implements OnInit {
     this.customerService.delete(id).subscribe(customer => {
       console.log(customer);
       // alert('delete success');
-      this.router.navigate(['/customer/list']);
       this.dialogRef.close('delete'); // bien delete la bien nam ben trang list dong 77
       alert('delete success');
+    }, error => {
+    }, () => {
+      this.router.navigate(['/customer/list']);
     });
   }
 

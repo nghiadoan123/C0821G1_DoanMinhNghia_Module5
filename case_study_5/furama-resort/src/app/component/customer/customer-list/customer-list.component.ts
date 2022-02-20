@@ -71,7 +71,7 @@ export class CustomerListComponent implements OnInit {
     this.reverse = !this.reverse;
   }
 
-  openDialog(customer: any) {
+  openDialogDelete(customer: Customer) {
     const dialogRef = this.dialog.open(CustomerDeleteComponent, {data: customer});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -81,7 +81,7 @@ export class CustomerListComponent implements OnInit {
     });
   }
 
-  openDialogEdit(customer: any) {
+  openDialogEdit(customer: Customer) {
     const dialogRef = this.dialog.open(CustomerEditComponent, {data: customer});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -94,10 +94,10 @@ export class CustomerListComponent implements OnInit {
   openDialogCreate() {
     const dialogRef = this.dialog.open(CustomerCreateComponent);
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result === 'create') {
-    //     this.customerService.getAll();
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'create') {
+        this.customerService.getAll();
+      }
+    });
   }
 }

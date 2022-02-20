@@ -1,0 +1,62 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Nguyễn Khuyến"
+    },
+    {
+      "name": "Nguyễn Thị Minh Khai",
+      "id": 2
+    },
+    {
+      "name": "Nguyen Van A",
+      "id": 3
+    }
+  ],
+  "contracts": [
+    {
+      "id": 1,
+      "checkIn": "2020-11-10",
+      "checkOut": "2020-11-20",
+      "deposit": 30,
+      "totalMoney": 300,
+      "customer": {
+        "id": 1,
+        "name": "Nguyễn Khuyến"
+      }
+    },
+    {
+      "id": 2,
+      "checkIn": "2020-10-10",
+      "checkOut": "2020-10-20",
+      "deposit": 20,
+      "totalMoney": 200,
+      "customer": {
+        "name": "Nguyễn Thị Minh Khai",
+        "id": 2
+      }
+    },
+    {
+      "id": 3,
+      "checkIn": "2020-10-10",
+      "checkOut": "2020-10-20",
+      "deposit": 20,
+      "totalMoney": 200,
+      "customer": {
+        "name": "Nguyễn Thị Minh Khai",
+        "id": 2
+      }
+    },
+    {
+      "id": 4,
+      "checkIn": "2020-09-10",
+      "checkOut": "2020-09-20",
+      "deposit": 10,
+      "totalMoney": 200,
+      "customer": {
+        "id": 1,
+        "name": "Nguyễn Khuyến"
+      }
+    }
+  ]
+}

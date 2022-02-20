@@ -8,10 +8,25 @@ import {ContractService} from '../../../service/contract/contract.service';
 import {Contract} from '../../../model/contract';
 import {Router} from '@angular/router';
 
-function checkDay(abstractControl: AbstractControl) {
-  const checkIn = abstractControl.value.checkIn;
-  const checkOut = abstractControl.value.checkOut;
-  return checkOut >= checkIn ? null : {checkConfirm: true};
+
+function checkDate(date: any) {
+  const currentDate = new Date();
+  const dateImport = new Date(date);
+  if (dateImport > currentDate) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkEndDateToStartDate(checkIn, checkOut) {
+  const inputCheckIn = new  Date(checkIn);
+  const inputCheckOut = new Date(checkOut);
+  if (inputCheckOut > inputCheckIn) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 @Component({
@@ -26,13 +41,13 @@ export class ContractCreateComponent implements OnInit {
     //   checkIn: new FormControl('', [Validators.required]),
     //   checkOut: new FormControl('', [Validators.required])
     // }, checkDay),
-    checkIn: new FormControl('', [Validators.required]),
-    checkOut: new FormControl('', [Validators.required, Validators.email]),
+    checkIn: new FormControl('', [Validators.required, this.checkValidDate]),
+    checkOut: new FormControl('', [Validators.required, this.checkValidDate]),
     deposit: new FormControl('', [Validators.required]),
-    totalMoney: new FormControl('', [Validators.required, Validators.pattern('^\\+84\\d{9}$')]),
+    totalMoney: new FormControl('', [Validators.required]),
     customer: new FormControl('', [Validators.required]),
     facility: new FormControl('', [Validators.required]),
-  });
+  }, this.compareCheckInCheckOut);
   customers: Customer[] = [];
   facilities: Facility[] = [];
   constructor(private customerService: CustomerService,
@@ -65,5 +80,13 @@ export class ContractCreateComponent implements OnInit {
     this.facilityService.getAll().subscribe(facilities => {
       this.facilities = facilities;
     });
+  }
+
+  checkValidDate(abstractControl: AbstractControl) {
+    return checkDate(abstractControl.value) ? null : {futureDate : true};
+  }
+
+  compareCheckInCheckOut(abstractControl: AbstractControl) {
+    return checkEndDateToStartDate(abstractControl.value.checkIn, abstractControl.value.checkOut) ? null : { checkInOut: true };
   }
 }

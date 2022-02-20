@@ -22,10 +22,10 @@
 <div class="container-fluid px-5">
   <div class="row">
     <div class="col-lg-12  text-lg-start">
-              <button type="button" routerLink="/customer/create" class="btn btn-primary" >Add new Customer</button>
-<!--      <button (click)="openDialogCreate()" class="btn btn-primary">-->
-<!--        Add new Customer-->
-<!--      </button>-->
+<!--              <button type="button" routerLink="/customer/create" class="btn btn-primary" >Add new Customer</button>-->
+      <button (click)="openDialogCreate()" class="btn btn-primary">
+        Add new Customer
+      </button>
     </div>
   </div>
 </div>
@@ -59,7 +59,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let cus of customers | orderBy: key: reverse | paginate: {itemsPerPage:5,currentPage:page}">
+      <tr *ngFor="let cus of customers | orderBy: key: reverse | paginate: {itemsPerPage:2,currentPage:page}">
         <td>{{cus.id}}</td>
         <td>{{cus.name}}</td>
         <td>{{cus.codeNumber}}</td>
@@ -74,7 +74,7 @@
 <!--          <button (click)="getId(cus.id)" class="btn btn-danger" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
 <!--            Delete-->
 <!--          </button>-->
-          <button (click)="openDialog(cus)" class="btn btn-danger">  Delete</button>
+          <button (click)="openDialogDelete(cus)" class="btn btn-danger">  Delete</button>
 
         </td>
 
