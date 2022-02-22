@@ -59,7 +59,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let cus of customers | orderBy: key: reverse | paginate: {itemsPerPage:2,currentPage:page}">
+<!--      <tr *ngFor="let cus of customers | orderBy: key: reverse | paginate: {itemsPerPage:2,currentPage:page}"> -->
+      <tr *ngFor="let cus of customers">
         <td>{{cus.id}}</td>
         <td>{{cus.name}}</td>
         <td>{{cus.codeNumber}}</td>
@@ -69,7 +70,7 @@
         <td>{{cus.phone}}</td>
         <td>{{cus.email}}</td>
         <td>{{cus.address}}</td>
-        <td>{{cus.customerType}}</td>
+        <td>{{cus.customerType.name}}</td>
         <td class="r-o">
 <!--          <button (click)="getId(cus.id)" class="btn btn-danger" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
 <!--            Delete-->
@@ -91,7 +92,7 @@
         </td>
       </tr>
       </tbody>
-      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+<!--      <pagination-controls (pageChange)="page = $event"></pagination-controls>-->
     </table>
 
 <!--    &lt;!&ndash;Delete Modal &ndash;&gt;-->

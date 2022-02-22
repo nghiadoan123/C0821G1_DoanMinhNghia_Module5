@@ -27,8 +27,8 @@ export class CustomerService {
     return this.httpClient.get<Customer>(`${API_URL}/customer/${id}`);
   }
 
-  update(id: number, customer: Customer): Observable<Customer> {
-    return this.httpClient.patch<Customer>(`${API_URL}/customer/update/${id}`, customer);
+  update( customer: Customer): Observable<Customer> {
+    return this.httpClient.put<Customer>(`${API_URL}/customer/update`, customer);
   }
 
   delete(id: number) {

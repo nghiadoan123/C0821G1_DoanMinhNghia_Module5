@@ -7,7 +7,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {CustomerDeleteComponent} from '../customer-delete/customer-delete.component';
 import {CustomerEditComponent} from '../customer-edit/customer-edit.component';
 import {CustomerCreateComponent} from '../customer-create/customer-create.component';
-
+import {ViewEncapsulation} from '@angular/compiler/src/core';
+import {CustomerTypeService} from '../../../service/customer_type/customer-type.service';
+import {CustomerType} from '../../../model/customer-type';
 
 @Component({
   selector: 'app-customer-list',
@@ -15,8 +17,10 @@ import {CustomerCreateComponent} from '../customer-create/customer-create.compon
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+  private customerTypes: CustomerType[];
 
   constructor(private customerService: CustomerService,
+              private customerTypeService: CustomerTypeService,
               private router: Router,
               public dialog: MatDialog) {
   }
@@ -72,32 +76,50 @@ export class CustomerListComponent implements OnInit {
   }
 
   openDialogDelete(customer: Customer) {
-    const dialogRef = this.dialog.open(CustomerDeleteComponent, {data: customer});
-
+    // @ts-ignore
+    const dialogRef = this.dialog.open(CustomerDeleteComponent, {data: customer}, this.getAllCustometType());
+    this.getAllCustometType();
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'delete') {
         this.customerService.getAll();
       }
+    }, error1 => {
+    }, () => {
+      this.getAll();
     });
   }
 
   openDialogEdit(customer: Customer) {
-    const dialogRef = this.dialog.open(CustomerEditComponent, {data: customer});
-
+    // @ts-ignore
+    const dialogRef = this.dialog.open(CustomerEditComponent, {data: customer}, this.getAllCustometType());
+    this.getAllCustometType();
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'edit') {
         this.customerService.getAll();
       }
+    }, error1 => {
+
+    }, () => {
+      this.getAll();
+    });
+  }
+
+  getAllCustometType() {
+    this.customerTypeService.getAll().subscribe(value => {
+      this.customerTypes = value;
     });
   }
 
   openDialogCreate() {
-    const dialogRef = this.dialog.open(CustomerCreateComponent);
-
+    const dialogRef = this.dialog.open(CustomerCreateComponent, {data: this.getAllCustometType()});
+    this.getAllCustometType();
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'create') {
         this.customerService.getAll();
       }
+    }, error1 => {
+    }, () => {
+      this.getAll();
     });
   }
 }

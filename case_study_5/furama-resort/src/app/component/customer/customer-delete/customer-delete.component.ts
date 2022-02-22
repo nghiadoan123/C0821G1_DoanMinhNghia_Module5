@@ -4,6 +4,8 @@ import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Customer} from '../../../model/customer';
+import {CustomerTypeService} from '../../../service/customer_type/customer-type.service';
+import {CustomerType} from '../../../model/customer-type';
 
 @Component({
   selector: 'app-customer-delete',
@@ -15,8 +17,11 @@ export class CustomerDeleteComponent implements OnInit {
 
   customerForm: FormGroup;
   private customers: Customer[];
+  private customerTypes: CustomerType[];
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private customerService: CustomerService,
+              private customerTypeService: CustomerTypeService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private dialogRef: MatDialogRef<CustomerDeleteComponent>) {
@@ -51,6 +56,7 @@ export class CustomerDeleteComponent implements OnInit {
       this.customerForm.controls.codeNumber.setValue(this.data.codeNumber);
       this.customerForm.controls.customerType.setValue(this.data.customerType);
     }
+    this.getAllCustometType();
   }
 
 
@@ -76,6 +82,12 @@ export class CustomerDeleteComponent implements OnInit {
       console.log(list);
       this.customers = list;
       // this.sortedData = this.customers.slice();
+    });
+  }
+
+  getAllCustometType(){
+    this.customerTypeService.getAll().subscribe(value => {
+      this.customerTypes = value;
     });
   }
 

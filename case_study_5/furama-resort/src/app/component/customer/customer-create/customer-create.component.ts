@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import * as moment from 'moment';
 import {Customer} from '../../../model/customer';
+import {CustomerTypeService} from '../../../service/customer_type/customer-type.service';
+import {CustomerType} from '../../../model/customer-type';
 
 
 function checkDate(birthDay: any) {
@@ -17,7 +19,7 @@ function checkDate(birthDay: any) {
     age--;
   }
   console.log(age);
-  if (age >= 18){
+  if (age >= 18) {
     return true;
   } else {
     return false;
@@ -42,17 +44,22 @@ export class CustomerCreateComponent implements OnInit {
     codeNumber: new FormControl('', [Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
     customerType: new FormControl('', [Validators.required])
   });
-  private customers: Customer[];
+  public customers: Customer[];
+  public customerTypes: CustomerType[];
+
   constructor(private customerService: CustomerService,
+              private customerTypeService: CustomerTypeService,
               private router: Router,
               private dialogRef: MatDialogRef<CustomerCreateComponent>,
               private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.getAllCustomerType();
   }
 
   create() {
+    this.getAllCustomerType();
     const customer = this.customerForm.value;
     this.customerService.save(customer).subscribe(customerData => {
       console.log(customerData);
@@ -61,11 +68,18 @@ export class CustomerCreateComponent implements OnInit {
       this.getAll();
     });
   }
+
   getAll() {
     this.customerService.getAll().subscribe(list => {
       console.log(list);
       this.customers = list;
       // this.sortedData = this.customers.slice();
+    });
+  }
+
+  getAllCustomerType() {
+    this.customerTypeService.getAll().subscribe(value => {
+      this.customerTypes = value;
     });
   }
 

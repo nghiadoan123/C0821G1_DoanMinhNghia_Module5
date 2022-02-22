@@ -4,6 +4,8 @@ import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Customer} from '../../../model/customer';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {CustomerTypeService} from '../../../service/customer_type/customer-type.service';
+import {CustomerType} from '../../../model/customer-type';
 
 @Component({
   selector: 'app-customer-edit',
@@ -14,10 +16,12 @@ export class CustomerEditComponent implements OnInit {
 
   // id: number;
   customerForm: FormGroup;
+  customerTypes: CustomerType[] = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private dialogRef: MatDialogRef<CustomerEditComponent>,
               private customerService: CustomerService,
+              private customerTypeService: CustomerTypeService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
     // activatedRoute.paramMap.subscribe((praMap: ParamMap) => {
@@ -27,6 +31,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllCustometType();
     this.customerForm = new FormGroup({
             id: new FormControl('', [Validators.required]),
             name: new FormControl('', [Validators.required]),
@@ -51,6 +56,7 @@ export class CustomerEditComponent implements OnInit {
       this.customerForm.controls.codeNumber.setValue(this.data.codeNumber);
       this.customerForm.controls.customerType.setValue(this.data.customerType);
     }
+
   }
 
 
@@ -74,13 +80,20 @@ export class CustomerEditComponent implements OnInit {
 
 
   update(id: number) {
+    this.getAllCustometType();
     const customer = this.customerForm.value;
-    this.customerService.update(id, customer).subscribe(customerData => {
+    this.customerService.update(customer).subscribe(customerData => {
       alert('update success');
       this.dialogRef.close('edit');
     }, error => {
     }, () => {
       this.router.navigate(['/customer/list']);
+    });
+  }
+
+  getAllCustometType(){
+    this.customerTypeService.getAll().subscribe(value => {
+      this.customerTypes = value;
     });
   }
 

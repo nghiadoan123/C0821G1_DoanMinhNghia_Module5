@@ -152,11 +152,7 @@
       <label class="col-md-2 col-form-label">Customer Type</label>
       <div class="col-sm-10 padding">
         <select name="customerType" id="customerType" formControlName="customerType" class="width-select">
-          <option value="Diamond">Diamond</option>
-          <option value="Platinium">Platinium</option>
-          <option value="Gold">Gold</option>
-          <option value="Silver">Silver</option>
-          <option value="Member">Member</option>
+          <option *ngFor="let cusType of customerTypes" [ngValue]="cusType">{{cusType.id}}</option>
         </select>
         <!--        <input type="text"  formControlName="customerType"/>-->
       </div>
