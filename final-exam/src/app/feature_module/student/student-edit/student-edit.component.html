@@ -1,0 +1,116 @@
+<p>student-edit works!</p>
+<div id="form" class="mb-3 row bg-light" style="padding-left: 50px">
+  <form novalidate="novalidate" [formGroup]="studentForm">
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Id</label>
+      <div class="col-sm-10 padding">
+        <input type="text" readonly formControlName="id"/>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="name"/>
+      </div>
+    </div>
+
+    <div style="color: red"
+         *ngIf="studentForm.get('name').errors?.required && (studentForm.get('name').dirty ||studentForm.get('name').touched)">
+      name cannot be blank!
+    </div>
+
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">gro</label>
+      <div class="col-sm-10 padding">
+        <select name="" id="" formControlName="gro">
+          <option value="Group 1">Group 1</option>
+          <option value="Group 2">Group 2</option>
+          <option value="Group 3">Group 3</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="color: red"
+         *ngIf="studentForm.get('gro').errors?.required && (studentForm.get('gro').dirty ||studentForm.get('gro').touched)">
+      group name cannot be blank!
+    </div>
+
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">title</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="title"/>
+      </div>
+    </div>
+
+
+    <div style="color: red"
+         *ngIf="studentForm.get('title').errors?.required && (studentForm.get('title').dirty ||studentForm.get('title').touched)">
+      title cannot be blank!
+    </div>
+
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">tutor</label>
+      <div class="col-sm-10 padding">
+        <select formControlName="customer">
+          <option selected [value]="null" disabled>
+            select customer
+          </option>
+          <option *ngFor="let student of students" [ngValue]="student">{{student.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="color: red"
+         *ngIf="studentForm.get('tutor').errors?.required && (studentForm.get('tutor').dirty ||studentForm.get('tutor').touched)">
+      tutor cannot be blank!
+    </div>
+
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">email</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="email"/>
+      </div>
+    </div>
+
+    <div style="color: red"
+         *ngIf="studentForm.get('email').errors?.required && (studentForm.get('email').dirty ||studentForm.get('email').touched)">
+      email cannot be blank!
+    </div>
+
+    <div style="color: red"
+         *ngIf="studentForm.get('email').errors?.pattern && (studentForm.get('email').dirty ||studentForm.get('email').touched)">
+      email cannot not valid!
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Phone</label>
+      <div class="col-sm-10 padding">
+        <input type="text" formControlName="phone"/>
+      </div>
+    </div>
+
+    <div style="color: red"
+         *ngIf="studentForm.get('phone').errors?.required && (studentForm.get('phone').dirty ||studentForm.get('phone').touched)">
+      phone cannot be blank!
+    </div>
+
+    <div style="color: red"
+         *ngIf="studentForm.get('phone').errors?.pattern && (studentForm.get('phone').dirty ||studentForm.get('phone').touched)">
+      phone is not valid!
+    </div>
+
+
+    <mat-dialog-actions>
+      <button class="btn btn-danger" mat-dialog-close>Cancel</button>
+      &nbsp;
+      <button class="btn btn-info" [mat-dialog-close]="true" (click)="update(studentForm.controls.id.value)">Edit
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

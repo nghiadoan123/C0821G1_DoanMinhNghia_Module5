@@ -1,0 +1,42 @@
+<p>student-list works!</p>
+
+<div class="container-fluid p-5">
+  <div class="row">
+    <table class="table table-striped w-100 mx-0">
+      <thead class="thead-inverse">
+      <tr>
+        <th>ID </th>
+        <th >Name</th>
+        <th >group</th>
+        <th >title</th>
+        <th >tutor</th>
+        <th >email</th>
+        <th >phone</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let student of students ">
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.gro}}</td>
+        <td>{{student.title}}</td>
+        <td>{{student.tutor.name}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.phone}}</td>
+        <td class="r-o">
+          <button (click)="openDialogDelete(student)" class="btn btn-danger">  Delete</button>
+        </td>
+
+        <td class="r-o">
+          <button (click)="openDialogEdit(student)" class="btn btn-primary">
+            Edit
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+</div>

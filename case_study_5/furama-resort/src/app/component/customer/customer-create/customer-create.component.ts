@@ -4,6 +4,7 @@ import {CustomerService} from '../../../service/customer/customer.service';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import * as moment from 'moment';
+import {Customer} from '../../../model/customer';
 
 
 function checkDate(birthDay: any) {
@@ -41,8 +42,7 @@ export class CustomerCreateComponent implements OnInit {
     codeNumber: new FormControl('', [Validators.required, Validators.pattern('^\\KH-\\d{4,}$')]),
     customerType: new FormControl('', [Validators.required])
   });
-
-
+  private customers: Customer[];
   constructor(private customerService: CustomerService,
               private router: Router,
               private dialogRef: MatDialogRef<CustomerCreateComponent>,
@@ -58,6 +58,14 @@ export class CustomerCreateComponent implements OnInit {
       console.log(customerData);
       this.router.navigate(['/customer/list']);
       this.dialogRef.close('create');
+      this.getAll();
+    });
+  }
+  getAll() {
+    this.customerService.getAll().subscribe(list => {
+      console.log(list);
+      this.customers = list;
+      // this.sortedData = this.customers.slice();
     });
   }
 

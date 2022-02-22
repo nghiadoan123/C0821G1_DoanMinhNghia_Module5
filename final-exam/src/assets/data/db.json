@@ -1,62 +1,50 @@
 {
-  "customers": [
+  "students": [
     {
       "id": 1,
-      "name": "Nguyễn Khuyến"
-    },
-    {
-      "name": "Nguyễn Thị Minh Khai",
-      "id": 2
-    },
-    {
-      "name": "Nguyen Van A",
-      "id": 3
-    }
-  ],
-  "contracts": [
-    {
-      "id": 1,
-      "checkIn": "2020-11-10",
-      "checkOut": "2020-11-20",
-      "deposit": 30,
-      "totalMoney": 300,
-      "customer": {
+      "name": "Nguyễn d",
+      "gro": "Group 2",
+      "title": "title 1",
+      "tutor": {
         "id": 1,
-        "name": "Nguyễn Khuyến"
-      }
-    },
-    {
-      "id": 2,
-      "checkIn": "2020-10-10",
-      "checkOut": "2020-10-20",
-      "deposit": 20,
-      "totalMoney": 200,
-      "customer": {
-        "name": "Nguyễn Thị Minh Khai",
-        "id": 2
-      }
+        "name": "Nguyen Van A"
+      },
+      "email": "d@gmail.com",
+      "phone": "0905884812"
     },
     {
       "id": 3,
-      "checkIn": "2020-10-10",
-      "checkOut": "2020-10-20",
-      "deposit": 20,
-      "totalMoney": 200,
-      "customer": {
-        "name": "Nguyễn Thị Minh Khai",
-        "id": 2
-      }
+      "name": "Nguyễn Hoang",
+      "gro": "group 3",
+      "title": "title 3",
+      "tutor": {
+        "id": 2,
+        "name": "Nguyen Van B"
+      },
+      "email": "hoang@gmail.com",
+      "phone": "0905881451"
     },
     {
       "id": 4,
-      "checkIn": "2020-09-10",
-      "checkOut": "2020-09-20",
-      "deposit": 10,
-      "totalMoney": 200,
-      "customer": {
-        "id": 1,
-        "name": "Nguyễn Khuyến"
-      }
+      "name": "Nguyễn ABC",
+      "gro": "group 3",
+      "title": "title 3",
+      "tutor": {
+        "id": 2,
+        "name": "Nguyen Van B"
+      },
+      "email": "abc@gmail.com",
+      "phone": "0905881452"
+    }
+  ],
+  "tutors": [
+    {
+      "id": 1,
+      "name": "Nguyen Van A"
+    },
+    {
+      "id": 2,
+      "name": "Nguyen Van B"
     }
   ]
 }

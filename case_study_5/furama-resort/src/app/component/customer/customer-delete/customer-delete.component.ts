@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Customer} from '../../../model/customer';
 
 @Component({
   selector: 'app-customer-delete',
@@ -13,7 +14,7 @@ export class CustomerDeleteComponent implements OnInit {
   id: number;
 
   customerForm: FormGroup;
-
+  private customers: Customer[];
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private customerService: CustomerService,
               private router: Router,
@@ -60,12 +61,23 @@ export class CustomerDeleteComponent implements OnInit {
       // alert('delete success');
       this.dialogRef.close('delete'); // bien delete la bien nam ben trang list dong 77
       alert('delete success');
+      this.customerService.getAll().subscribe(list => {
+        console.log(list);
+        this.customers = list;
+        // this.sortedData = this.customers.slice();
+      });
     }, error => {
     }, () => {
       this.router.navigate(['/customer/list']);
     });
   }
-
+  getAll() {
+    this.customerService.getAll().subscribe(list => {
+      console.log(list);
+      this.customers = list;
+      // this.sortedData = this.customers.slice();
+    });
+  }
 
   // private getCustomer(id: number) {
   //   this.customerService.findById(id).subscribe(getCustomer => {
